@@ -1,0 +1,1299 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>三能戶外｜市場研究報告 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Noto+Sans+TC:wght@300;400;500;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:        #f5f0e8;
+    --bg-card:   #fdf9f3;
+    --ink:       #1a1a18;
+    --ink-mid:   #3d3d38;
+    --ink-light: #7a7a70;
+    --amber:     #c8783a;
+    --amber-lt:  #e8c49a;
+    --amber-bg:  #fdf1e3;
+    --green:     #3a5c40;
+    --green-lt:  #e8f0e9;
+    --red-lt:    #f5e8e8;
+    --border:    #ddd6c8;
+    --sidebar-w: 260px;
+    --serif:     'Cormorant Garamond', 'Noto Serif TC', serif;
+    --sans:      'Noto Sans TC', 'Helvetica Neue', sans-serif;
+    --mono:      'DM Mono', monospace;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.75;
+    display: flex;
+  }
+
+  /* ── SIDEBAR ─────────────────────────────────────── */
+  #sidebar {
+    width: var(--sidebar-w);
+    min-height: 100vh;
+    background: var(--ink);
+    color: #c8c0b0;
+    position: fixed;
+    top: 0; left: 0;
+    display: flex;
+    flex-direction: column;
+    z-index: 100;
+    overflow-y: auto;
+  }
+
+  .sidebar-brand {
+    padding: 32px 24px 20px;
+    border-bottom: 1px solid #333;
+  }
+  .sidebar-brand .logo-mark {
+    font-family: var(--serif);
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--amber-lt);
+    letter-spacing: 0.02em;
+    line-height: 1.2;
+  }
+  .sidebar-brand .logo-sub {
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #666;
+    margin-top: 4px;
+  }
+
+  .sidebar-meta {
+    padding: 16px 24px;
+    border-bottom: 1px solid #2a2a28;
+    font-size: 11px;
+    color: #555;
+    line-height: 1.8;
+  }
+
+  nav { padding: 20px 0 40px; }
+  nav a {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    padding: 7px 24px;
+    text-decoration: none;
+    color: #888;
+    font-size: 12px;
+    letter-spacing: 0.02em;
+    transition: all 0.2s;
+    border-left: 2px solid transparent;
+  }
+  nav a:hover, nav a.active {
+    color: var(--amber-lt);
+    border-left-color: var(--amber);
+    background: rgba(200,120,58,0.08);
+  }
+  nav a .ch-num {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: #444;
+    min-width: 18px;
+  }
+  nav a:hover .ch-num, nav a.active .ch-num { color: var(--amber); }
+
+  /* ── MAIN ─────────────────────────────────────────── */
+  main {
+    margin-left: var(--sidebar-w);
+    flex: 1;
+    max-width: 900px;
+    padding: 0 56px 80px;
+  }
+
+  /* ── HERO ─────────────────────────────────────────── */
+  .hero {
+    padding: 72px 0 56px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 64px;
+    position: relative;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0; right: -56px;
+    width: 320px; height: 320px;
+    background: radial-gradient(circle at 70% 30%, rgba(200,120,58,0.10) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-eyebrow {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin-bottom: 20px;
+  }
+  .hero-title {
+    font-family: var(--serif);
+    font-size: 56px;
+    font-weight: 300;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin-bottom: 8px;
+  }
+  .hero-title strong { font-weight: 600; }
+  .hero-subtitle {
+    font-family: var(--serif);
+    font-size: 22px;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--ink-light);
+    margin-bottom: 36px;
+  }
+  .hero-meta {
+    display: flex;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+  .hero-meta-item { font-size: 12px; color: var(--ink-light); }
+  .hero-meta-item strong { display: block; color: var(--ink-mid); font-size: 13px; }
+
+  .audience-pills {
+    display: flex; gap: 8px; flex-wrap: wrap; margin-top: 28px;
+  }
+  .pill {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    padding: 4px 12px;
+    font-size: 11px;
+    color: var(--ink-mid);
+    letter-spacing: 0.03em;
+  }
+
+  .legend {
+    display: flex; gap: 20px; flex-wrap: wrap;
+    padding: 16px 20px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    margin-top: 32px;
+    font-size: 12px;
+    color: var(--ink-mid);
+  }
+  .legend-item { display: flex; align-items: center; gap: 6px; }
+
+  /* ── CHAPTER ──────────────────────────────────────── */
+  .chapter {
+    margin-bottom: 80px;
+    scroll-margin-top: 32px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  .chapter.visible { opacity: 1; transform: translateY(0); }
+
+  .chapter-header {
+    display: flex;
+    align-items: flex-end;
+    gap: 20px;
+    margin-bottom: 32px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border);
+  }
+  .chapter-num {
+    font-family: var(--serif);
+    font-size: 72px;
+    font-weight: 300;
+    line-height: 1;
+    color: var(--amber-lt);
+    letter-spacing: -0.04em;
+    flex-shrink: 0;
+  }
+  .chapter-title-wrap {}
+  .chapter-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--amber);
+    display: block;
+    margin-bottom: 4px;
+  }
+  .chapter-title {
+    font-family: var(--serif);
+    font-size: 30px;
+    font-weight: 600;
+    line-height: 1.2;
+    color: var(--ink);
+  }
+
+  h3 {
+    font-family: var(--serif);
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--ink);
+    margin: 36px 0 14px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--border);
+  }
+  h4 {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin: 28px 0 10px;
+  }
+
+  p { margin-bottom: 14px; color: var(--ink-mid); }
+  p strong { color: var(--ink); font-weight: 700; }
+
+  /* ── TABLES ───────────────────────────────────────── */
+  .table-wrap { overflow-x: auto; margin: 20px 0; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+  thead th {
+    background: var(--ink);
+    color: var(--amber-lt);
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-align: left;
+    padding: 10px 14px;
+    white-space: nowrap;
+  }
+  tbody tr { border-bottom: 1px solid var(--border); }
+  tbody tr:nth-child(even) { background: var(--bg-card); }
+  tbody tr:hover { background: var(--amber-bg); }
+  td {
+    padding: 10px 14px;
+    color: var(--ink-mid);
+    vertical-align: top;
+  }
+  td:first-child { color: var(--ink); font-weight: 500; }
+
+  /* ── BADGES ───────────────────────────────────────── */
+  .v { display: inline-flex; align-items: center; gap: 4px; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 2px; white-space: nowrap; }
+  .v-ok  { background: var(--green-lt); color: var(--green); }
+  .v-warn { background: var(--amber-bg); color: #9a5a20; }
+  .v-bad { background: var(--red-lt); color: #8b2020; }
+
+  /* ── CALLOUT BOXES ────────────────────────────────── */
+  .callout {
+    border-left: 3px solid var(--amber);
+    background: var(--amber-bg);
+    padding: 16px 20px;
+    margin: 20px 0;
+    border-radius: 0 4px 4px 0;
+    font-size: 14px;
+    color: var(--ink-mid);
+  }
+  .callout strong { color: var(--ink); }
+  .callout.green {
+    border-left-color: var(--green);
+    background: var(--green-lt);
+  }
+  .callout.dark {
+    border-left-color: var(--ink);
+    background: #f0ece4;
+  }
+  .callout-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--amber);
+    display: block;
+    margin-bottom: 8px;
+  }
+  .callout.green .callout-label { color: var(--green); }
+
+  /* ── QUOTE / POSITIONING ──────────────────────────── */
+  .position-statement {
+    border: 1px solid var(--amber);
+    padding: 28px 32px;
+    margin: 28px 0;
+    position: relative;
+    background: var(--bg-card);
+  }
+  .position-statement::before {
+    content: '"';
+    font-family: var(--serif);
+    font-size: 80px;
+    line-height: 1;
+    color: var(--amber-lt);
+    position: absolute;
+    top: 8px; left: 16px;
+  }
+  .position-text {
+    font-family: var(--serif);
+    font-size: 22px;
+    font-style: italic;
+    font-weight: 300;
+    line-height: 1.5;
+    color: var(--ink);
+    padding-left: 20px;
+  }
+  .position-sub {
+    font-size: 12px;
+    color: var(--ink-light);
+    padding-left: 20px;
+    margin-top: 8px;
+  }
+
+  /* ── GRID CARDS ───────────────────────────────────── */
+  .card-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin: 20px 0;
+  }
+  .card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    padding: 20px;
+    border-radius: 2px;
+  }
+  .card-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .card-label.s { color: var(--green); }
+  .card-label.w { color: #c17f2a; }
+  .card-label.o { color: #3a6080; }
+  .card-label.t { color: #8b2020; }
+  .card ul { padding-left: 16px; color: var(--ink-mid); font-size: 13px; line-height: 1.8; }
+
+  /* ── PESTEL ───────────────────────────────────────── */
+  .pestel-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin: 20px 0;
+  }
+  .pestel-item {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    padding: 16px;
+    border-radius: 2px;
+  }
+  .pestel-letter {
+    font-family: var(--serif);
+    font-size: 32px;
+    font-weight: 600;
+    color: var(--amber-lt);
+    line-height: 1;
+  }
+  .pestel-name {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin-bottom: 8px;
+  }
+  .pestel-item p { font-size: 12px; line-height: 1.6; margin: 0; }
+
+  /* ── PRIORITY STEPS ───────────────────────────────── */
+  .steps { counter-reset: step; margin: 20px 0; }
+  .step {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 16px;
+    align-items: flex-start;
+  }
+  .step-num {
+    counter-increment: step;
+    width: 32px; height: 32px;
+    background: var(--ink);
+    color: var(--amber-lt);
+    font-family: var(--mono);
+    font-size: 12px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    border-radius: 2px;
+    margin-top: 2px;
+  }
+  .step-body { font-size: 13px; color: var(--ink-mid); }
+  .step-body strong { color: var(--ink); display: block; margin-bottom: 2px; font-size: 14px; }
+
+  /* ── STAT HIGHLIGHT ───────────────────────────────── */
+  .stat-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    margin: 20px 0;
+  }
+  .stat {
+    background: var(--bg-card);
+    padding: 20px;
+    text-align: center;
+  }
+  .stat-num {
+    font-family: var(--serif);
+    font-size: 36px;
+    font-weight: 600;
+    color: var(--amber);
+    line-height: 1;
+    display: block;
+  }
+  .stat-label { font-size: 11px; color: var(--ink-light); margin-top: 4px; line-height: 1.4; }
+  .stat-badge { margin-top: 6px; }
+
+  /* ── COMPETITOR MATRIX ────────────────────────────── */
+  .comp-chart {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 0.7;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    margin: 20px 0;
+    padding: 20px;
+  }
+  .comp-axis {
+    position: absolute;
+    background: var(--border);
+  }
+  .comp-axis.h { height: 1px; left: 40px; right: 40px; top: 50%; }
+  .comp-axis.v { width: 1px; top: 20px; bottom: 20px; left: 50%; }
+  .comp-label {
+    position: absolute;
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-light);
+  }
+  .comp-label.top    { top: 8px;    left: 50%; transform: translateX(-50%); }
+  .comp-label.bottom { bottom: 8px; left: 50%; transform: translateX(-50%); }
+  .comp-label.left   { left: 4px;   top: 50%;  transform: translateY(-50%) rotate(-90deg); transform-origin: center; }
+  .comp-label.right  { right: 4px;  top: 50%;  transform: translateY(-50%) rotate(90deg);  transform-origin: center; }
+  .comp-dot {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+  .comp-dot-circle {
+    width: 12px; height: 12px;
+    border-radius: 50%;
+    margin: 0 auto 4px;
+  }
+  .comp-dot-name {
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--ink);
+    white-space: nowrap;
+  }
+  .comp-dot-sub { font-size: 9px; color: var(--ink-light); }
+
+  /* ── CHANNEL TABLE SPECIAL ─────────────────────────── */
+  .channel-priority {
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    padding: 2px 8px;
+    border-radius: 2px;
+  }
+  .p1 { background: var(--ink); color: var(--amber-lt); }
+  .p2 { background: var(--amber); color: white; }
+  .p3 { background: var(--green-lt); color: var(--green); }
+
+  /* ── SOURCE LIST ──────────────────────────────────── */
+  .source-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin: 16px 0;
+  }
+  .source-item {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    padding: 10px 14px;
+    font-size: 12px;
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    border-radius: 2px;
+  }
+  .source-num {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--amber);
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .source-body {}
+  .source-name { color: var(--ink); font-weight: 500; }
+  .source-type { font-size: 10px; color: var(--ink-light); }
+
+  /* ── FOOTER ───────────────────────────────────────── */
+  footer {
+    margin-top: 80px;
+    padding-top: 32px;
+    border-top: 1px solid var(--border);
+    font-size: 11px;
+    color: var(--ink-light);
+    line-height: 1.8;
+  }
+
+  /* ── PRINT ────────────────────────────────────────── */
+  @media print {
+    #sidebar { display: none; }
+    main { margin-left: 0; padding: 20px; }
+    .chapter { opacity: 1; transform: none; }
+  }
+
+  @media (max-width: 768px) {
+    #sidebar { display: none; }
+    main { margin-left: 0; padding: 0 24px 60px; }
+    .hero-title { font-size: 36px; }
+    .card-grid, .stat-row, .pestel-grid { grid-template-columns: 1fr; }
+    .source-grid { grid-template-columns: 1fr; }
+    .stat-row { display: block; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ─── SIDEBAR ─────────────────────────────────────── -->
+<aside id="sidebar">
+  <div class="sidebar-brand">
+    <div class="logo-mark">三能戶外<br>市場研究報告</div>
+    <div class="logo-sub">Sanneng Outdoor · 2026</div>
+  </div>
+  <div class="sidebar-meta">
+    日期：2026-06-18<br>
+    版本：初稿 v1.0<br>
+    Agents 數：108｜工具調用：438 次
+  </div>
+  <nav>
+    <a href="#ch1"><span class="ch-num">01</span>執行摘要</a>
+    <a href="#ch2"><span class="ch-num">02</span>研究方法</a>
+    <a href="#ch3"><span class="ch-num">03</span>市場概況與趨勢</a>
+    <a href="#ch4"><span class="ch-num">04</span>品類深度分析</a>
+    <a href="#ch5"><span class="ch-num">05</span>消費者分析</a>
+    <a href="#ch6"><span class="ch-num">06</span>競爭分析</a>
+    <a href="#ch7"><span class="ch-num">07</span>PESTEL 外部環境</a>
+    <a href="#ch8"><span class="ch-num">08</span>數位表現分析</a>
+    <a href="#ch9"><span class="ch-num">09</span>社群聲量分析</a>
+    <a href="#ch10"><span class="ch-num">10</span>結論與策略建議</a>
+    <a href="#appendix"><span class="ch-num">附</span>來源附錄</a>
+  </nav>
+</aside>
+
+<!-- ─── MAIN ──────────────────────────────────────────── -->
+<main>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-eyebrow">Market Research Report · 2026-06-18</div>
+    <h1 class="hero-title"><strong>三能戶外</strong><br>市場研究報告</h1>
+    <div class="hero-subtitle">Sanneng Outdoor — Brand Positioning & Market Intelligence</div>
+    <div class="hero-meta">
+      <div class="hero-meta-item"><strong>研究對象</strong>三能戶外 Sanneng Outdoor</div>
+      <div class="hero-meta-item"><strong>母品牌</strong>三能食品（40 年烘焙器具製造）</div>
+      <div class="hero-meta-item"><strong>版本</strong>初稿 v1.0</div>
+    </div>
+    <div class="audience-pills">
+      <span class="pill">總經理</span>
+      <span class="pill">管理層</span>
+      <span class="pill">選品／開發新品團隊</span>
+      <span class="pill">電商團隊</span>
+      <span class="pill">社群經營團隊</span>
+    </div>
+    <div class="legend">
+      <div class="legend-item"><span class="v v-ok">✓ 已驗證</span> 通過三票對抗性驗證（2/3 以上確認）</div>
+      <div class="legend-item"><span class="v v-warn">⚠ 待驗證</span> 多方來源引述，作方向性參考</div>
+      <div class="legend-item"><span class="v v-bad">✗ 不採用</span> 已驗證為不實或誇大</div>
+    </div>
+  </div>
+
+  <!-- ── CH 1 ───────────────────────────────────────── -->
+  <section class="chapter" id="ch1">
+    <div class="chapter-header">
+      <div class="chapter-num">01</div>
+      <div class="chapter-title-wrap">
+        <span class="chapter-label">Executive Summary</span>
+        <div class="chapter-title">執行摘要</div>
+      </div>
+    </div>
+
+    <h3>品牌背景</h3>
+    <p>三能戶外是台灣烘焙器具製造商<strong>三能食品</strong>（40 年製造歷史）推出的戶外用品副品牌，主打<strong>純鈦材質</strong>露營餐具及戶外用品，強調輕量、無毒、耐腐蝕、食品安全等特性。產品定價 NT$139–1,819，涵蓋純鈦餐具、露營桌椅、照明、收納等品類。</p>
+
+    <h3>核心發現</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>面向</th><th>關鍵發現</th></tr></thead>
+        <tbody>
+          <tr><td>市場機會</td><td>台灣露營市場年產值估計逾 40 億元 <span class="v v-warn">⚠</span>，成長動能趨穩但仍正向</td></tr>
+          <tr><td>品類空缺</td><td>純鈦餐具市場由國際品牌（Snow Peak、Toaks）主導，本土食品安全定位尚無強力玩家</td></tr>
+          <tr><td>差異化槓桿</td><td>三能 40 年食品安全製造基因是真實且可驗證的競爭壁壘</td></tr>
+          <tr><td>社群現況</td><td>FB 粉絲約 1,585（成立初期），社群聲量極低，屬起步階段</td></tr>
+          <tr><td>最大機會</td><td>「烹食安全＋鈦材輕量」雙軸切入，鎖定親子家庭露營族</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>建議行動（優先序）</h3>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-body"><strong>鎖定親子家庭族群（35–54 歲）為核心目標</strong>以「食材安全到餐具安全」為溝通主軸，對應其最高購買決策關切</div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-body"><strong>純鈦餐具品類強化為核心</strong>利用製造優勢拉開與代購品牌的品質差距，建立入門款到旗艦套裝的完整梯隊</div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-body"><strong>社群從 IG 飲食＋露營交叉內容切入</strong>而非一般露營裝備內容，對應 IG 「飲食」討論佔超過 30% 的平台特性</div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-body"><strong>蝦皮先跑量、再佈局 momo</strong>電商通路分階段進場，初期積累評價與關鍵字排名</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CH 2 ───────────────────────────────────────── -->
+  <section class="chapter" id="ch2">
+    <div class="chapter-header">
+      <div class="chapter-num">02</div>
+      <div class="chapter-title-wrap">
+        <span class="chapter-label">Methodology</span>
+        <div class="chapter-title">研究方法</div>
+      </div>
+    </div>
+
+    <div class="stat-row">
+      <div class="stat"><span class="stat-num">108</span><div class="stat-label">研究 Agents<br>平行執行</div></div>
+      <div class="stat"><span class="stat-num">438</span><div class="stat-label">工具調用次數</div></div>
+      <div class="stat"><span class="stat-num">26</span><div class="stat-label">來源網頁<br>抓取並分析</div></div>
+    </div>
+
+    <h3>資料來源分類</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>來源類型</th><th>具體來源</th></tr></thead>
+        <tbody>
+          <tr><td>產業報告</td><td>QSearch 露營社群聲量報告（2023）、Social Lab 洞察報告（2023）、MYmkc 管理知識中心</td></tr>
+          <tr><td>媒體研究</td><td>CARAT 週報露營消費者研究（2019、2022）、關鍵評論網 TNL</td></tr>
+          <tr><td>電商研究</td><td>GoodSquay 電商通路分析、TechNews 2025 台灣電商研究</td></tr>
+          <tr><td>品牌官網</td><td>三能戶外、Snow Peak、TiANN（鈦安）、OWL CAMP</td></tr>
+          <tr><td>社群搜尋</td><td>Facebook、Instagram、Threads 公開貼文搜尋</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>驗證流程</h3>
+    <p>本報告透過<strong>多代理人深度研究框架</strong>執行，分 5 個研究角度平行搜尋，抓取 26 個來源、萃取 105 條聲明，並對前 25 條聲明進行<strong>三票對抗性驗證</strong>（需 2/3 同意方視為確認）。</p>
+
+    <div class="callout">
+      <span class="callout-label">限制說明</span>
+      Facebook／Instagram 頁面受登入牆限制，三能戶外自身詳細社群數據（追蹤數、互動率）無法自動抓取。台灣露營市場整體規模無官方統計，市場規模數據均為業界估計，應以趨勢方向為參考。
+    </div>
+  </section>
+
+  <!-- ── CH 3 ───────────────────────────────────────── -->
+  <section class="chapter" id="ch3">
+    <div class="chapter-header">
+      <div class="chapter-num">03</div>
+      <div class="chapter-title-wrap">
+        <span class="chapter-label">Market Overview & Trends</span>
+        <div class="chapter-title">市場概況與趨勢</div>
+      </div>
+    </div>
+
+    <h3>市場規模估計</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>指標</th><th>數據</th><th>可信度</th></tr></thead>
+        <tbody>
+          <tr><td>年產值（含周邊產業）</td><td>估計 NT$40 億</td><td><span class="v v-warn">⚠ 待驗證</span></td></tr>
+          <tr><td>露營周邊商機</td><td>估計 NT$50 億</td><td><span class="v v-warn">⚠ 待驗證</span></td></tr>
+          <tr><td>全台露營區數量</td><td>估計 1,800–1,900+ 處</td><td><span class="v v-warn">⚠ 待驗證</span></td></tr>
+          <tr><td>常態性露營人口</td><td>估計 30–50 萬（曾露營者約 200 萬）</td><td><span class="v v-warn">⚠ 待驗證</span></td></tr>
+          <tr><td>露營區月營業額</td><td>估計逾 NT$2 億</td><td><span class="v v-warn">⚠ 待驗證</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size:12px; color: var(--ink-light);">* 台灣露營市場無政府官方統計口徑，上述數據源自業界報告，各方來源數字存在落差，應以方向性趨勢而非精確數字解讀。</p>
+
+    <h3>產業生命週期</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>時期</th><th>階段</th><th>特徵</th></tr></thead>
+        <tbody>
+          <tr><td>2012–2019</td><td><strong>爆發期</strong></td><td>2014 年前三年成長率達 60–70%，露營族群快速擴張</td></tr>
+          <tr><td>2020–2022</td><td><strong>疫情催化</strong></td><td>疫情封鎖推動近郊露營替代旅遊需求，業績成長逾 4 倍</td></tr>
+          <tr><td>2023–今</td><td><strong>成熟分化</strong></td><td>熱潮趨穩，市場從「有沒有」轉向「好不好」的品質競爭</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>五大關鍵趨勢</h3>
+
+    <h4>① 豪華露營（Glamping）崛起</h4>
+    <p>IG 豪華露營相關內容佔整體露營 IG 聲量 <strong>41.9%</strong> <span class="v v-warn">⚠</span>，消費者從「能睡就好」轉向「體驗精緻化」。</p>
+
+    <h4>② 親子露營主流化</h4>
+    <p>親子露營區持續成為 FB 社群熱門議題，35–54 歲家庭族群是市場主要消費力來源 <span class="v v-warn">⚠</span>。</p>
+
+    <h4>③ 飲食文化融入露營 ← 三能戶外直接機會點</h4>
+    <div class="callout green">
+      <span class="callout-label">核心機會</span>
+      「飲食」是 IG 與論壇露營討論的第一大主題（各佔超過 30%）<span class="v v-warn">⚠</span>——煮好吃的比搭帳篷更受關注。三能戶外的「露營廚房」定位與此趨勢完全吻合。
+    </div>
+
+    <h4>④ 輕量化、永續化需求上升</h4>
+    <p>登山輕量化風潮溢出到一般露營，鈦材因兼具輕量＋無塗層特性，正處上升期。</p>
+
+    <h4>⑤ 露營車（Car Camping）話題主導 Facebook</h4>
+    <p>FB 露營車相關討論佔 <strong>45.5%</strong> <span class="v v-warn">⚠</span>，顯示重裝備露營仍是 FB 社群主流；IG 則偏精緻視覺與飲食。</p>
+  </section>
+
+  <!-- ── CH 4 ───────────────────────────────────────── -->
+  <section class="chapter" id="ch4">
+    <div class="chapter-header">
+      <div class="chapter-num">04</div>
+      <div class="chapter-title-wrap">
+        <span class="chapter-label">Product & Category Analysis</span>
+        <div class="chapter-title">品類深度分析：純鈦戶外餐具</div>
+      </div>
+    </div>
+
+    <h3>鈦材特性與商業意義</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>特性</th><th>說明</th><th>對三能戶外的意義</th></tr></thead>
+        <tbody>
+          <tr><td>輕量</td><td>1.1L 鈦鍋約 158g，同容量鋁鍋約 244g <span class="v v-warn">⚠</span>，差約 35%</td><td>訴求輕量登山露營族</td></tr>
+          <tr><td>無化學塗層</td><td>不同於鋁合金鍋的陽極處理或不沾塗層</td><td>食品安全訴求核心</td></tr>
+          <tr><td>耐酸鹼腐蝕</td><td>抗醋、醬油等酸性食材侵蝕</td><td>戶外料理場景說服力</td></tr>
+          <tr><td>無金屬異味</td><td>不影響食物風味 <span class="v v-ok">✓ 已驗證</span></td><td>美食露營族最在意</td></tr>
+          <tr><td>無鎳（Grade 1/2）</td><td>適合鎳過敏族群 <span class="v v-warn">⚠</span></td><td>健康意識族群差異化</td></tr>
+          <tr><td>耐高低溫</td><td>可直火加熱，低溫不脆化</td><td>四季通用</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>競品定位圖</h3>
+    <div class="comp-chart">
+      <div class="comp-axis h"></div>
+      <div class="comp-axis v"></div>
+      <div class="comp-label top">▲ 高價位</div>
+      <div class="comp-label bottom">▼ 低價位</div>
+      <div class="comp-label left">食品安全訴求</div>
+      <div class="comp-label right">通用/裝備訴求</div>
+
+      <!-- Snow Peak: high price, mid-right -->
+      <div class="comp-dot" style="left:72%; top:18%;">
+        <div class="comp-dot-circle" style="background:#1a1a18;"></div>
+        <div class="comp-dot-name">Snow Peak</div>
+        <div class="comp-dot-sub">Trek 900 $54.95 USD ✓</div>
+      </div>
+
+      <!-- TiANN: mid-high, left -->
+      <div class="comp-dot" style="left:28%; top:35%;">
+        <div class="comp-dot-circle" style="background:#3a5c40;"></div>
+        <div class="comp-dot-name">TiANN 鈦安</div>
+        <div class="comp-dot-sub">無塗層食安定位</div>
+      </div>
+
+      <!-- 三能戶外: target position mid-left -->
+      <div class="comp-dot" style="left:30%; top:48%;">
+        <div class="comp-dot-circle" style="background:#c8783a; width:16px; height:16px;"></div>
+        <div class="comp-dot-name" style="color:#c8783a;">▶ 三能戶外</div>
+        <div class="comp-dot-sub">建議定位空間</div>
+      </div>
+
+      <!-- Toaks: low price, right -->
+      <div class="comp-dot" style="left:70%; top:75%;">
+        <div class="comp-dot-circle" style="background:#7a7a70;"></div>
+        <div class="comp-dot-name">Toaks / BV</div>
+        <div class="comp-dot-sub">平價背包客</div>
+      </div>
+    </div>
+
+    <h3>主要競品分析</h3>
+    <h4>Snow Peak（日本）</h4>
+    <p>日系高端戶外品牌，Trek 900 Titanium Cookset 定價 <strong>USD$54.95（約 NT$1,800）</strong> <span class="v v-ok">✓ 已驗證</span>。品牌力強、設計感佳、全球通路完整，但食品安全製造論述不如三能有說服力。</p>
+
+    <h4>TiANN 鈦安（台灣）</h4>
+    <p>食品安全定位與三能戶外高度重疊，強調「無毒無化學塗層、頂級純鈦原料」 <span class="v v-ok">✓ 已驗證</span>。注意：「100% 台灣製造」聲稱 <span class="v v-bad">✗ 不採用</span>（已驗證為誇大）。製造背景薄弱、無母品牌背書——三能的最大本土競品。</p>
+
+    <h4>Toaks / BV Outdoors（平價國際）</h4>
+    <p>定位預算型，主打背包客、登山客，透過蝦皮、Amazon 代購進入台灣。品牌故事薄弱，三能可以品牌力區隔。</p>
+
+    <div class="callout green">
+      <span class="callout-label">品類機會點</span>
+      三能食品 40 年烘焙器具製造，有 SGS、食品級用材稽核等實際憑證可援引。TiANN 僅有品牌聲稱，三能可以用<strong>製造事實</strong>反制。這是任何競品都難以複製的護城河。
+    </div>
+  </section>
+
+  <!-- ── CH 5 ───────────────────────────────────────── -->
+  <section class="chapter" id="ch5">
+    <div class="chapter-header">
+      <div class="chapter-num">05</div>
+      <div class="chapter-title-wrap">
+        <span class="chapter-label">Consumer Analysis</span>
+        <div class="chapter-title">消費者分析</div>
+      </div>
+    </div>
+
+    <h3>人口統計輪廓</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>族群</th><th>年齡</th><th>性別</th><th>特徵</th></tr></thead>
+        <tbody>
+          <tr><td>露營網站主要瀏覽者</td><td>35–44 歲最多，45–54 次之</td><td>男 56.6%、女 43.4%</td><td><span class="v v-warn">⚠</span></td></tr>
+          <tr><td>社群重度參與者</td><td>25–44 歲</td><td>女性 IG 主導</td><td>豪華露營、飲食內容</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>兩大消費族群 Persona</h3>
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-label s" style="color: #3a6080;">族群 A：年輕單身族（18–34 歲）</div>
+        <ul>
+          <li>重視流行與設計感，衝動購物傾向高</li>
+          <li>高度使用網路（41%）與線上影音（35.2%）</li>
+          <li>決策靠 IG / YouTube KOL 推薦</li>
+          <li>切點：輕量登山、野炊美食拍攝</li>
+          <li>消費單價較低，傾向試用性購買</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-label s">族群 B：親子家庭族（35–54 歲）← 主力</div>
+        <ul>
+          <li>謹慎購物，重視品牌可信度與實用性</li>
+          <li>品牌忠誠度高，信任後長期回購</li>
+          <li>決策靠口碑、親子露營社團推薦</li>
+          <li>切點：<strong>孩子吃的東西要安全</strong></li>
+          <li>消費單價高，整組購買意願強</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="callout green">
+      <span class="callout-label">主力建議</span>
+      35–54 歲親子家庭族已習慣為孩子的食品安全買單（有機食品、安全餐具市場印證）。三能食品品牌背書對這群人說服力最強，情感共鳴最深。
+    </div>
+
+    <h3>購買決策三大關鍵因素</h3>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">①</div>
+        <div class="step-body"><strong>安全性（三能最強）</strong>孩子使用安全嗎？有無有害塗層？——三能製造基因直接回應</div>
+      </div>
+      <div class="step">
+        <div class="step-num">②</div>
+        <div class="step-body"><strong>重量（鈦材先天優勢）</strong>整組帶出去多重？——鈦材比鋁合金輕約 35%</div>
+      </div>
+      <div class="step">
+        <div class="step-num">③</div>
+        <div class="step-body"><strong>CP 值（需要說故事）</strong>比不沾鍋貴多少？值不值得？——需要內容行銷建立認知</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CH 6 ───────────────────────────────────────── -->
+  <section class="chapter" id="ch6">
+    <div class="chapter-header">
+      <div class="chapter-num">06</div>
+      <div class="chapter-title-wrap">
+        <span class="chapter-label">Competitive Analysis</span>
+        <div class="chapter-title">競爭分析</div>
+      </div>
+    </div>
+
+    <h3>主要競爭格局</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>品牌</th><th>類型</th><th>定位</th><th>台灣通路</th><th>優勢</th><th>劣勢</th></tr></thead>
+        <tbody>
+          <tr><td>Snow Peak</td><td>國際高端</td><td>日系精品露營</td><td>官網、代理商</td><td>品牌力、設計感</td><td>無食安製造論述</td></tr>
+          <tr><td>TiANN 鈦安</td><td>台灣本土</td><td>無塗層食品安全</td><td>官網、蝦皮</td><td>定位清晰</td><td>製造背景薄弱</td></tr>
+          <tr><td>Toaks</td><td>國際平價</td><td>背包客輕量鈦餐具</td><td>蝦皮、代購</td><td>極輕量、低價</td><td>品牌故事弱</td></tr>
+          <tr><td>OWL CAMP</td><td>台灣本土</td><td>台灣設計戶外品牌</td><td>官網、實體店</td><td>本土認同感</td><td>非鈦材專攻</td></tr>
+          <tr><td style="color: var(--amber); font-weight: 700;">三能戶外</td><td>台灣本土</td><td>食安製造基因+鈦材</td><td>官網</td><td>母品牌製造力</td><td>品牌知名度為零</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>SWOT 分析</h3>
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-label s">Strengths 優勢</div>
+        <ul>
+          <li>三能食品 40 年食品安全製造歷史，具備真實可查的製造憑證</li>
+          <li>鈦材特性與食品安全訴求高度契合，論述一致性強</li>
+          <li>產品線齊全，可做整組客單拉高</li>
+          <li>企業客製頁面已存在，B2B 通路可立即啟動</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-label w">Weaknesses 劣勢</div>
+        <ul>
+          <li>品牌成立時間短，FB 僅 1,585 按讚</li>
+          <li>目前通路單一（官網為主），缺乏露營實體店陳列</li>
+          <li>「烘焙品牌的戶外線」定位轉換需要解釋成本</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-label o">Opportunities 機會</div>
+        <ul>
+          <li>台灣露營「飲食化」趨勢：煮好吃比搭帳篷更受關注</li>
+          <li>TiANN 等食安訴求競品仍弱，現在切入可搶先建立認知</li>
+          <li>企業客製可作 B2B 通路突破口</li>
+          <li>Threads 帳號空白，低競爭早期佔位成本低</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-label t">Threats 威脅</div>
+        <ul>
+          <li>中國製平價鈦餐具持續透過蝦皮壓低市場價格期望</li>
+          <li>Snow Peak 等國際品牌持續強化台灣市場佈局</li>
+          <li>露營熱潮如退溫，整體市場需求可能收縮</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CH 7 ───────────────────────────────────────── -->
+  <section class="chapter" id="ch7">
+    <div class="chapter-header">
+      <div class="chapter-num">07</div>
+      <div class="chapter-title-wrap">
+        <span class="chapter-label">PESTEL Analysis</span>
+        <div class="chapter-title">外部環境分析</div>
+      </div>
+    </div>
+
+    <div class="pestel-grid">
+      <div class="pestel-item">
+        <div class="pestel-letter">P</div>
+        <div class="pestel-name">Political 政治</div>
+        <p>山林開放政策（2020）推動登山露營擴張；合法露營場地管制趨嚴；食品安全法規持續強化，三能戶外受益</p>
+      </div>
+      <div class="pestel-item">
+        <div class="pestel-letter">E</div>
+        <div class="pestel-name">Economic 經濟</div>
+        <p>通貨膨脹對非必需品消費造成壓力，但中高端品牌受影響相對小；企業送禮市場對客製化戶外餐具有潛在需求</p>
+      </div>
+      <div class="pestel-item">
+        <div class="pestel-letter">S</div>
+        <div class="pestel-name">Social 社會</div>
+        <p>健康意識提升延伸到器具選擇；親子戶外活動主流化；反快消費趨勢（鈦材耐用性「用一輩子」符合）</p>
+      </div>
+      <div class="pestel-item">
+        <div class="pestel-letter">T</div>
+        <div class="pestel-name">Technological 技術</div>
+        <p>社群電商成熟（IG Shopping、蝦皮直播帶貨）；短影音崛起（露營料理＋餐具展示效果佳）；D2C 模式可行</p>
+      </div>
+      <div class="pestel-item">
+        <div class="pestel-letter">E</div>
+        <div class="pestel-name">Environmental 環境</div>
+        <p>Leave No Trace（無痕山林）運動：耐用鈦器具比易損耗器具更符合環保訴求；無塗層訴求符合天然、無化學添加趨勢</p>
+      </div>
+      <div class="pestel-item">
+        <div class="pestel-letter">L</div>
+        <div class="pestel-name">Legal 法規</div>
+        <p>食品接觸材料相關法規（食安法）：三能食品既有合規經驗是進入障礙，也是品牌論述素材；進口鈦餐具無特殊關稅壁壘</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CH 8 ───────────────────────────────────────── -->
+  <section class="chapter" id="ch8">
+    <div class="chapter-header">
+      <div class="chapter-num">08</div>
+      <div class="chapter-title-wrap">
+        <span class="chapter-label">Digital & E-commerce Analysis</span>
+        <div class="chapter-title">數位表現分析</div>
+      </div>
+    </div>
+
+    <h3>官網現況</h3>
+    <p>網域：<strong>sannengoutdoor.com</strong>｜功能完整（購物、企業客製頁面）｜定價 NT$139–1,819 定位清晰</p>
+    <div class="callout">
+      <span class="callout-label">機會點</span>
+      企業客製（Customization）頁面已上線，可立即作為 B2B 進場的槓桿工具，同時取得品牌曝光素材。
+    </div>
+
+    <h3>電商通路策略建議</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>優先</th><th>通路</th><th>特性</th><th>建議策略</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><span class="channel-priority p1">優先</span></td>
+            <td>蝦皮（Shopee）</td>
+            <td>賣家責任制，門檻低，適合 MVP 測試與走量 <span class="v v-warn">⚠</span></td>
+            <td>用中低價鈦杯、鈦碗試水溫，累積評價與關鍵字排名</td>
+          </tr>
+          <tr>
+            <td><span class="channel-priority p2">第二</span></td>
+            <td>momo 購物</td>
+            <td>平台審查制，MD 決定曝光，適合高客單成熟品牌 <span class="v v-warn">⚠</span></td>
+            <td>待品牌有知名度後，以整組鈦餐具禮盒切入</td>
+          </tr>
+          <tr>
+            <td><span class="channel-priority p3">長期</span></td>
+            <td>官網 D2C</td>
+            <td>利潤最高，可累積會員數據</td>
+            <td>長期核心，配合 IG/FB 社群導流</td>
+          </tr>
+          <tr>
+            <td>低優先</td>
+            <td>露天拍賣</td>
+            <td>老客群，價格導向</td>
+            <td>除非庫存清倉需求，否則暫不優先</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>電商操作重點</h3>
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-label s" style="color: var(--amber);">主圖策略</div>
+        <p style="font-size:13px;">鈦材質感拍攝 ＋ 食材入鏡（雞蛋、肉片進鍋畫面），直接連結食安訴求</p>
+      </div>
+      <div class="card">
+        <div class="card-label s" style="color: var(--amber);">關鍵字佈局</div>
+        <p style="font-size:13px;">「純鈦餐具」「露營餐具 無塗層」「鈦合金 健康」「親子露營 餐具」</p>
+      </div>
+      <div class="card">
+        <div class="card-label s" style="color: var(--amber);">組合銷售</div>
+        <p style="font-size:13px;">單件入門 → 整組家庭套裝（拉高客單），與親子露營消費行為吻合</p>
+      </div>
+      <div class="card">
+        <div class="card-label s" style="color: var(--amber);">促銷節策略</div>
+        <p style="font-size:13px;">以贈品附件（鈦餐具夾、收納袋）取代純折扣，保護品牌溢價</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CH 9 ───────────────────────────────────────── -->
+  <section class="chapter" id="ch9">
+    <div class="chapter-header">
+      <div class="chapter-num">09</div>
+      <div class="chapter-title-wrap">
+        <span class="chapter-label">Social Voice Analysis — FB / IG / Threads</span>
+        <div class="chapter-title">社群聲量分析</div>
+      </div>
+    </div>
+
+    <h3>台灣露營產業社群整體聲量</h3>
+    <div class="stat-row">
+      <div class="stat">
+        <span class="stat-num">253%</span>
+        <div class="stat-label">IG 愛心數（互動）成長<br>（近三年）</div>
+        <div class="stat-badge"><span class="v v-warn">⚠ 待驗證</span></div>
+      </div>
+      <div class="stat">
+        <span class="stat-num">246%</span>
+        <div class="stat-label">YouTube 觀看數成長<br>（近三年）</div>
+        <div class="stat-badge"><span class="v v-warn">⚠ 待驗證</span></div>
+      </div>
+      <div class="stat">
+        <span class="stat-num">8 萬+</span>
+        <div class="stat-label">月均露營討論聲量<br>（2023/3–8 月）</div>
+        <div class="stat-badge"><span class="v v-warn">⚠ 待驗證</span></div>
+      </div>
+    </div>
+
+    <h3>各平台話題偏好</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>平台</th><th>最熱話題</th><th>佔比</th><th>對三能戶外的意義</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Facebook</strong></td><td>露營車</td><td>45.5% <span class="v v-warn">⚠</span></td><td>重裝備買家為主，非鈦餐具核心族群</td></tr>
+          <tr><td><strong>Instagram</strong></td><td>豪華露營、飲食</td><td>各 30%+ <span class="v v-warn">⚠</span></td><td>三能戶外最應深耕的平台</td></tr>
+          <tr><td><strong>PTT</strong></td><td>露營車</td><td>40.6% <span class="v v-warn">⚠</span></td><td>技術性討論，可補充選品資訊</td></tr>
+          <tr><td><strong>Threads</strong></td><td>露營車生活感</td><td>新興平台</td><td>品牌採用率低，可早期佔位</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>三能戶外自身社群現況</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>平台</th><th>現況</th><th>評估</th></tr></thead>
+        <tbody>
+          <tr><td>Facebook</td><td>1,585 按讚，45 人正在討論</td><td>極初期，內容量與互動均低</td></tr>
+          <tr><td>Instagram</td><td>@sanneng_outdoor（詳細數據需後台確認）</td><td>—</td></tr>
+          <tr><td>Threads</td><td><strong>無官方帳號（確認）</strong></td><td>空白待佔，建議儘早開設</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>社群內容象限建議</h3>
+    <div class="callout dark">
+      <span class="callout-label">內容定位</span>
+      三能戶外應佔領的話題象限：<strong>「親子露營 × 飲食食安」</strong>——而非泛談裝備的一般露營帳號。用「孩子的第一個戶外餐具」切入，而非「最輕最好的露營鍋」。
+    </div>
+
+    <h4>建議內容主題</h4>
+    <div class="steps">
+      <div class="step"><div class="step-num">1</div><div class="step-body"><strong>「孩子的第一個戶外餐具」系列</strong>親子食安情感訴求，最強社群共鳴點</div></div>
+      <div class="step"><div class="step-num">2</div><div class="step-body"><strong>「鈦鍋煮什麼」料理示範</strong>飲食內容＋器具展示，對應 IG 飲食話題主導性</div></div>
+      <div class="step"><div class="step-num">3</div><div class="step-body"><strong>「烘焙師傅的露營廚房」品牌故事</strong>母品牌製造技術延伸，差異化論述具象化</div></div>
+      <div class="step"><div class="step-num">4</div><div class="step-body"><strong>Threads 對話型內容</strong>「你用鋁鍋還是鈦鍋？」低成本早期佔位，不強推銷售</div></div>
+    </div>
+  </section>
+
+  <!-- ── CH 10 ──────────────────────────────────────── -->
+  <section class="chapter" id="ch10">
+    <div class="chapter-header">
+      <div class="chapter-num">10</div>
+      <div class="chapter-title-wrap">
+        <span class="chapter-label">Conclusion & Recommendations</span>
+        <div class="chapter-title">結論與策略建議</div>
+      </div>
+    </div>
+
+    <h3>核心定位建議</h3>
+    <div class="position-statement">
+      <div class="position-text">食品安全製造商做的露營餐具</div>
+      <div class="position-sub">三能食品 40 年製造基因是任何競品無法複製的資產。TiANN 等競品只能「聲稱」食品安全，三能戶外可以「證明」食品安全——這是根本差異。</div>
+    </div>
+
+    <h4>品牌定位語建議（供參考）</h4>
+    <div class="callout green">
+      主軸：「烘焙師傅信任的鈦，帶進你的露營廚房」<br>
+      輔助：「40 年食品安全製造，從烤箱到山野」
+    </div>
+
+    <h3>目標客群建議</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>優先序</th><th>族群</th><th>溝通主軸</th><th>主要觸點</th></tr></thead>
+        <tbody>
+          <tr><td><span class="channel-priority p1">主力</span></td><td>35–54 歲親子家庭露營族</td><td>孩子用的餐具要安全</td><td>IG 親子露營社群、FB 親子社團</td></tr>
+          <tr><td><span class="channel-priority p2">次要</span></td><td>25–35 歲健康意識女性</td><td>無塗層、無毒、高質感</td><td>IG Reels、美食 KOL 合作</td></tr>
+          <tr><td><span class="channel-priority p3">潛力</span></td><td>企業客製採購（HR、公關）</td><td>高質感客製伴手禮</td><td>B2B 直銷、官網企業專區</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>品類發展路線（選品／開發新品團隊）</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>階段</th><th>方向</th><th>具體行動</th></tr></thead>
+        <tbody>
+          <tr><td>第一階段<br>鞏固核心</td><td>純鈦餐具系列完整性</td><td>建立入門款（NT$300 以下鈦杯）到旗艦款（整組家庭套裝 NT$3,000+）完整梯隊</td></tr>
+          <tr><td>第二階段<br>品類延伸</td><td>烹飪工具＋飲品系列</td><td>鈦材鏟子、濾網、咖啡濾杯、保溫瓶——延伸「露營廚房」品類概念</td></tr>
+          <tr><td>第三階段<br>市場滲透</td><td>親子入門套裝</td><td>小份量輕量版，適合帶幼兒入門露營，鎖定親子家庭首購</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>電商通路時間軸（電商團隊）</h3>
+    <div class="steps">
+      <div class="step"><div class="step-num">0–3<br>月</div><div class="step-body"><strong>立即：蝦皮開店 ＋ 官網 SEO</strong>鈦餐具關鍵字佈局，累積基礎評價</div></div>
+      <div class="step"><div class="step-num">3–6<br>月</div><div class="step-body"><strong>短期：YouTube 開箱合作</strong>導流至官網，建立品牌搜尋聲量</div></div>
+      <div class="step"><div class="step-num">6–12<br>月</div><div class="step-body"><strong>中期：momo 上架談判</strong>以整組旗艦套裝為主要 SKU 進場</div></div>
+      <div class="step"><div class="step-num">1 年+</div><div class="step-body"><strong>長期：會員制度</strong>訂閱型配件補充包，提升 LTV（Life-time Value，顧客終身價值）</div></div>
+    </div>
+
+    <h3>風險矩陣</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>風險</th><th>等級</th><th>應對</th></tr></thead>
+        <tbody>
+          <tr><td>露營市場持續降溫</td><td>🟡 中</td><td>同時耕耘「城市野炊」「陽台露營」等衍生場景，降低單一市場依賴</td></tr>
+          <tr><td>TiANN 或本土競品加速佔位</td><td>🔴 高</td><td>三能製造基因差異化需盡快透過內容具象化，搶先建立認知</td></tr>
+          <tr><td>蝦皮中國製競品價格戰</td><td>🔴 高</td><td>鎖定中高端，以食安認證而非低價競爭，不打價格戰</td></tr>
+          <tr><td>社群冷啟動困難</td><td>🟡 中</td><td>先攻 B2B 客製取得品牌曝光素材，再以素材滋養 D2C 社群</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ── APPENDIX ────────────────────────────────────── -->
+  <section class="chapter" id="appendix">
+    <div class="chapter-header">
+      <div class="chapter-num" style="font-size:48px;">附錄</div>
+      <div class="chapter-title-wrap">
+        <span class="chapter-label">Sources</span>
+        <div class="chapter-title">主要引用來源</div>
+      </div>
+    </div>
+
+    <div class="source-grid">
+      <div class="source-item"><div class="source-num">01</div><div class="source-body"><div class="source-name">QSearch Blog 露營社群聲量報告（2023）</div><div class="source-type">產業分析｜IG/FB/YouTube 聲量數據</div></div></div>
+      <div class="source-item"><div class="source-num">02</div><div class="source-body"><div class="source-name">Social Lab 洞察報告（2023）</div><div class="source-type">社群分析｜露營月均討論聲量</div></div></div>
+      <div class="source-item"><div class="source-num">03</div><div class="source-body"><div class="source-name">CARAT 週報露營消費者研究（2019、2022）</div><div class="source-type">消費者研究｜族群輪廓、市場規模</div></div></div>
+      <div class="source-item"><div class="source-num">04</div><div class="source-body"><div class="source-name">mymkc 管理知識中心</div><div class="source-type">產業分析｜台灣露營市場綜述</div></div></div>
+      <div class="source-item"><div class="source-num">05</div><div class="source-body"><div class="source-name">Snow Peak 官網</div><div class="source-type">品牌一手資料｜Trek 900 定價 $54.95 ✓</div></div></div>
+      <div class="source-item"><div class="source-num">06</div><div class="source-body"><div class="source-name">TiANN 鈦安官網</div><div class="source-type">競品一手資料｜無塗層食安定位 ✓</div></div></div>
+      <div class="source-item"><div class="source-num">07</div><div class="source-body"><div class="source-name">GoodSquay 電商通路分析（2025）</div><div class="source-type">通路研究｜蝦皮 vs momo 差異</div></div></div>
+      <div class="source-item"><div class="source-num">08</div><div class="source-body"><div class="source-name">TechNews 台灣電商觀察（2025）</div><div class="source-type">電商研究｜雙 11 消費者行為</div></div></div>
+      <div class="source-item"><div class="source-num">09</div><div class="source-body"><div class="source-name">7Titanium.com</div><div class="source-type">品類知識｜鈦材食品安全特性</div></div></div>
+      <div class="source-item"><div class="source-num">10</div><div class="source-body"><div class="source-name">Exploring Wild 鈦器具評測</div><div class="source-type">品類知識｜重量比較數據</div></div></div>
+      <div class="source-item"><div class="source-num">11</div><div class="source-body"><div class="source-name">三能戶外官網</div><div class="source-type">品牌一手資料｜產品線、定價、企業客製</div></div></div>
+      <div class="source-item"><div class="source-num">12</div><div class="source-body"><div class="source-name">三能戶外 Facebook 公開頁面</div><div class="source-type">品牌社群｜粉絲數 1,585</div></div></div>
+    </div>
+
+    <footer>
+      本報告由多代理人深度研究框架生成並經人工審核整合。<br>
+      研究規模：108 agents · 438 次工具調用 · 26 個來源 · 105 條聲明提取 · 25 條聲明驗證<br>
+      資料截止日期：2026-06-18｜市場數據建議每半年更新一次
+    </footer>
+  </section>
+
+</main>
+
+<script>
+  // ── Scroll spy: highlight active nav link
+  const chapters = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('nav a');
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        navLinks.forEach(a => a.classList.remove('active'));
+        const active = document.querySelector(`nav a[href="#${entry.target.id}"]`);
+        if (active) active.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-20% 0px -70% 0px' });
+
+  chapters.forEach(ch => observer.observe(ch));
+
+  // ── Fade-in on scroll
+  const fadeObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        fadeObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.05 });
+
+  document.querySelectorAll('.chapter').forEach(ch => fadeObserver.observe(ch));
+</script>
+</body>
+</html>
