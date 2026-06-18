@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>三能戶外｜市場研究報告 2026</title>
+<title>三能戶外｜市場研究報告 2026 v2</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Noto+Sans+TC:wght@300;400;500;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -544,6 +544,141 @@
   .source-name { color: var(--ink); font-weight: 500; }
   .source-type { font-size: 10px; color: var(--ink-light); }
 
+  /* ── SKU TIER CARDS ──────────────────────────────── */
+  .sku-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    border: 1px solid var(--border);
+    margin: 20px 0;
+  }
+  .sku-card {
+    padding: 20px;
+    border-right: 1px solid var(--border);
+    background: var(--bg-card);
+  }
+  .sku-card:last-child { border-right: none; }
+  .sku-tag {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 2px;
+    display: inline-block;
+    margin-bottom: 10px;
+  }
+  .sku-tag.traffic  { background: var(--green-lt);  color: var(--green); }
+  .sku-tag.profit   { background: var(--ink);        color: var(--amber-lt); }
+  .sku-tag.strategy { background: var(--amber-bg);   color: #9a5a20; }
+  .sku-card h5 {
+    font-family: var(--serif);
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 8px;
+    line-height: 1.3;
+  }
+  .sku-card p { font-size: 12px; line-height: 1.65; margin: 0; }
+  .sku-price {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--amber);
+    margin-top: 8px;
+    display: block;
+  }
+
+  /* ── PRODUCT MATRIX ──────────────────────────────── */
+  .matrix-wrap { margin: 20px 0; overflow-x: auto; }
+  .matrix-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+  }
+  .matrix-table th, .matrix-table td {
+    border: 1px solid var(--border);
+    padding: 12px 14px;
+    text-align: center;
+    vertical-align: middle;
+  }
+  .matrix-table thead th {
+    background: var(--ink);
+    color: var(--amber-lt);
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .matrix-table .row-header {
+    background: var(--ink);
+    color: var(--amber-lt);
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-align: left;
+    width: 120px;
+    white-space: nowrap;
+  }
+  .matrix-table td { background: var(--bg-card); color: var(--ink-mid); text-align: left; }
+  .matrix-table td strong { color: var(--ink); display: block; margin-bottom: 2px; }
+  .matrix-table td.highlight { background: var(--amber-bg); border: 2px solid var(--amber); }
+
+  /* ── 90-DAY TIMELINE ─────────────────────────────── */
+  .timeline { margin: 20px 0; }
+  .timeline-month {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 0;
+    margin-bottom: 2px;
+  }
+  .timeline-label {
+    background: var(--ink);
+    color: var(--amber-lt);
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 14px 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    line-height: 1.4;
+    flex-shrink: 0;
+  }
+  .timeline-body {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-left: none;
+    padding: 14px 18px;
+  }
+  .timeline-title {
+    font-weight: 700;
+    color: var(--ink);
+    font-size: 13px;
+    margin-bottom: 6px;
+  }
+  .timeline-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .timeline-item {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    padding: 3px 10px;
+    font-size: 11px;
+    color: var(--ink-mid);
+  }
+  .timeline-item.key {
+    background: var(--amber-bg);
+    border-color: var(--amber-lt);
+    color: #9a5a20;
+    font-weight: 600;
+  }
+
   /* ── FOOTER ───────────────────────────────────────── */
   footer {
     margin-top: 80px;
@@ -581,7 +716,7 @@
   </div>
   <div class="sidebar-meta">
     日期：2026-06-18<br>
-    版本：初稿 v1.0<br>
+    版本：v2.0（優化版）<br>
     Agents 數：108｜工具調用：438 次
   </div>
   <nav>
@@ -848,6 +983,80 @@
       <span class="callout-label">品類機會點</span>
       三能食品 40 年烘焙器具製造，有 SGS、食品級用材稽核等實際憑證可援引。TiANN 僅有品牌聲稱，三能可以用<strong>製造事實</strong>反制。這是任何競品都難以複製的護城河。
     </div>
+
+    <h3>商品角色架構（Role-based SKU Strategy）</h3>
+    <p>報告 v1 提到擴展品類，但缺少明確的選品配置策略。建議以三種商品角色規劃 SKU 結構，每個角色有不同的商業目標，避免選品團隊陷入「全力衝毛利」或「全力衝流量」的單軸思維。</p>
+    <div class="sku-grid">
+      <div class="sku-card">
+        <span class="sku-tag traffic">流量型 Traffic Builder</span>
+        <h5>入門鈦杯／鈦碗</h5>
+        <p>不求高毛利，目的是讓親子客群在蝦皮或官網無痛入門，累積評價與品牌認知。降低首購決策門檻，是整個漏斗的入口。</p>
+        <span class="sku-price">建議售價 NT$139–300</span>
+      </div>
+      <div class="sku-card">
+        <span class="sku-tag profit">獲利型 Profit Driver</span>
+        <h5>旗艦家庭套裝</h5>
+        <p>獲利核心，透過「組合銷售（Bundle）」拉高客單價。一套碗＋鍋＋餐具組，讓已信任品牌的親子族群一次完整購入，最大化 LTV。</p>
+        <span class="sku-price">建議售價 NT$2,800–4,500</span>
+      </div>
+      <div class="sku-card">
+        <span class="sku-tag strategy">戰略型 Differentiator</span>
+        <h5>幼兒專用鈦餐具</h5>
+        <p>針對親子族群設計：更輕、防燙把手、適合幼兒抓握的造型。這類商品是用來與 TiANN 等競品拉開差距、建立「三能＝最安全的孩子餐具」護城河的關鍵。</p>
+        <span class="sku-price">建議售價 NT$600–1,200</span>
+      </div>
+    </div>
+
+    <h3>採購規格標準（Sourcing Criteria）</h3>
+    <p>三能擁有製造優勢，但在選品時需進一步「規格化」採購標準，才能真正將製造優勢轉換成可對外溝通的品牌資產，並預防定價上的被動。</p>
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-label s" style="color: var(--amber);">等級定義</div>
+        <p style="font-size:13px;">明確揭露商品使用 <strong>Grade 1</strong>（純度最高，適合直接接觸食品）或 <strong>Grade 2</strong> 鈦。這是消費者信任的基礎，也是目前競品普遍不透明的漏洞。</p>
+      </div>
+      <div class="card">
+        <div class="card-label s" style="color: var(--amber);">批次檢測透明化</div>
+        <p style="font-size:13px;">選品清單不僅是商品名稱，更要附上「批次檢測報告卡」，可公開或於官網 QR code 提供查詢。SGS 合規憑證是三能最直接的差異化素材。</p>
+      </div>
+      <div class="card">
+        <div class="card-label s" style="color: var(--amber);">成本底線計算</div>
+        <p style="font-size:13px;">鑑於蝦皮中國製平價品持續壓低市場價格期望，選品團隊需計算出「維持 SGS 合規成本下仍具市場競爭力的底價」，預防採購決策陷入被動。</p>
+      </div>
+      <div class="card">
+        <div class="card-label s" style="color: var(--amber);">B2B 白牌底材備料</div>
+        <p style="font-size:13px;">企業客製訂單需要快速交期，建議備妥一定比例「尚未雷雕的現貨白牌底材」，縮短 B2B 客戶等待時間，提高接單率與客戶滿意度。</p>
+      </div>
+    </div>
+
+    <h3>產品矩陣（Product Matrix）</h3>
+    <p>以下矩陣協助總經理與管理層一眼看出：三能戶外不僅是賣鍋子，而是在經營一個<strong>高回購率的家庭露營廚房系統</strong>。橫軸是產品等級，縱軸是訴求維度。</p>
+    <div class="matrix-wrap">
+      <table class="matrix-table">
+        <thead>
+          <tr>
+            <th></th>
+            <th>入門款<br>Entry</th>
+            <th>進階款<br>Mid</th>
+            <th>旗艦款<br>Flagship</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="row-header">功能性<br>食安訴求</td>
+            <td><strong>鈦杯／鈦碗</strong>無塗層、Grade 2、入門食安</td>
+            <td class="highlight"><strong>鈦鍋組</strong>Grade 1、SGS 認證、直火可用</td>
+            <td><strong>幼兒專用鈦餐具</strong>Grade 1、防燙設計、最高食安規格</td>
+          </tr>
+          <tr>
+            <td class="row-header">情感性<br>親子露營</td>
+            <td><strong>試用型禮盒</strong>親子入門、低風險首購</td>
+            <td><strong>親子野炊套裝</strong>家庭組合、溫馨露營情境</td>
+            <td class="highlight"><strong>家庭旗艦廚房套裝</strong>鍋碗盤齊全、企業送禮首選</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size:12px; color:var(--ink-light);">* 橘框格為建議優先開發商品，兼顧高毛利與強差異化。</p>
   </section>
 
   <!-- ── CH 5 ───────────────────────────────────────── -->
@@ -1041,6 +1250,40 @@
       企業客製（Customization）頁面已上線，可立即作為 B2B 進場的槓桿工具，同時取得品牌曝光素材。
     </div>
 
+    <h3>庫存周轉與季節性採購行事曆</h3>
+    <p>親子客群是季節性極強的消費群體，露營旺季集中在 Q2–Q3，但備貨與行銷投入必須超前。以下行事曆讓管理層看見：三能戶外不只會選品，也懂得管理<strong>營運資金（Working Capital）</strong>。</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>季度</th><th>露營市場狀態</th><th>備貨行動</th><th>行銷重點</th></tr></thead>
+        <tbody>
+          <tr>
+            <td>Q1（1–3 月）</td>
+            <td>淡季尾聲、春節後回溫</td>
+            <td>旺季主力 SKU 完成下單採購；備妥 B2B 白牌底材庫存</td>
+            <td>春節禮盒曝光；開始暖身親子露營內容</td>
+          </tr>
+          <tr>
+            <td>Q2（4–6 月）</td>
+            <td>露營旺季啟動</td>
+            <td>確認庫存水位，流量型商品備足 3 個月安全庫存</td>
+            <td>蝦皮主推旗艦套裝；KOL 開箱集中釋出</td>
+          </tr>
+          <tr>
+            <td>Q3（7–9 月）</td>
+            <td>旺季高峰</td>
+            <td>監控熱銷 SKU，必要時緊急補單；B2B 企業客製出貨</td>
+            <td>IG 飲食露營內容衝互動；年末禮盒預告</td>
+          </tr>
+          <tr>
+            <td>Q4（10–12 月）</td>
+            <td>淡季 + 節慶禮品需求</td>
+            <td>評估滯銷庫存，規劃年末出清或禮盒包裝轉化</td>
+            <td>企業採購主攻；尾牙伴手禮客製方案推廣</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
     <h3>電商通路策略建議</h3>
     <div class="table-wrap">
       <table>
@@ -1096,6 +1339,7 @@
   </section>
 
   <!-- ── CH 9 ───────────────────────────────────────── -->
+
   <section class="chapter" id="ch9">
     <div class="chapter-header">
       <div class="chapter-num">09</div>
@@ -1162,9 +1406,61 @@
       <div class="step"><div class="step-num">3</div><div class="step-body"><strong>「烘焙師傅的露營廚房」品牌故事</strong>母品牌製造技術延伸，差異化論述具象化</div></div>
       <div class="step"><div class="step-num">4</div><div class="step-body"><strong>Threads 對話型內容</strong>「你用鋁鍋還是鈦鍋？」低成本早期佔位，不強推銷售</div></div>
     </div>
+
+    <h3>前 90 天社群執行計畫</h3>
+    <p>社群冷啟動是三能戶外當前最緊迫的挑戰。以下將前 90 天拆成三個月，每月有明確的主要目標與具體動作，讓社群團隊有清晰的執行依據。</p>
+    <div class="timeline">
+      <div class="timeline-month">
+        <div class="timeline-label">Month<br>1<br>D1–30</div>
+        <div class="timeline-body">
+          <div class="timeline-title">地基建設：帳號建立 ＋ 視覺系統</div>
+          <div class="timeline-items">
+            <span class="timeline-item key">開設 Threads 帳號</span>
+            <span class="timeline-item key">IG 視覺風格定稿（露營廚房美食調性）</span>
+            <span class="timeline-item">Bio 更新：突出「食品安全製造」訴求</span>
+            <span class="timeline-item">每週 3 則基礎貼文（產品特寫＋料理場景）</span>
+            <span class="timeline-item">建立 Highlight：品牌故事 / 鈦的秘密 / 開箱</span>
+            <span class="timeline-item">鎖定 5–10 位目標 KOL 名單</span>
+          </div>
+        </div>
+      </div>
+      <div class="timeline-month">
+        <div class="timeline-label">Month<br>2<br>D31–60</div>
+        <div class="timeline-body">
+          <div class="timeline-title">聲量引爆：KOL 合作 ＋ 互動測試</div>
+          <div class="timeline-items">
+            <span class="timeline-item key">與 2–3 位親子露營 KOL 合作開箱</span>
+            <span class="timeline-item key">IG Reels：「鈦鍋煮野炊料理」示範影片</span>
+            <span class="timeline-item">Threads 每日一則問答型互動貼文</span>
+            <span class="timeline-item">蝦皮開店上架流量型 SKU（同步社群導流）</span>
+            <span class="timeline-item">每週 1 則「鈦的秘密」教育型內容</span>
+            <span class="timeline-item">監測 IG 貼文互動率，找出最佳發文時段</span>
+          </div>
+        </div>
+      </div>
+      <div class="timeline-month">
+        <div class="timeline-label">Month<br>3<br>D61–90</div>
+        <div class="timeline-body">
+          <div class="timeline-title">轉換驗證：付費測試 ＋ 數據優化</div>
+          <div class="timeline-items">
+            <span class="timeline-item key">IG 小額付費推廣測試（親子受眾，預算 NT$5,000–10,000）</span>
+            <span class="timeline-item key">整理前 60 天數據，找出最高互動內容類型</span>
+            <span class="timeline-item">B2B 企業客製方案在社群發布（尾牙先機）</span>
+            <span class="timeline-item">FB 親子露營社團發布測評邀請</span>
+            <span class="timeline-item">評估是否增加 KOL 合作數量</span>
+            <span class="timeline-item">制定 Q2 旺季社群排程草案</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="callout">
+      <span class="callout-label">KPI 建議（90 天末）</span>
+      IG 追蹤數突破 <strong>500</strong>、蝦皮店鋪累積評價 <strong>50+</strong>、Threads 帳號建立並有至少 <strong>30 則互動貼文</strong>。這三個數字是判斷社群策略是否奏效的早期訊號。
+    </div>
   </section>
 
   <!-- ── CH 10 ──────────────────────────────────────── -->
+
   <section class="chapter" id="ch10">
     <div class="chapter-header">
       <div class="chapter-num">10</div>
@@ -1260,7 +1556,8 @@
     <footer>
       本報告由多代理人深度研究框架生成並經人工審核整合。<br>
       研究規模：108 agents · 438 次工具調用 · 26 個來源 · 105 條聲明提取 · 25 條聲明驗證<br>
-      資料截止日期：2026-06-18｜市場數據建議每半年更新一次
+      資料截止日期：2026-06-18｜市場數據建議每半年更新一次<br>
+      <strong>v2.0 優化項目：</strong>商品角色架構（SKU 梯隊）、採購規格標準、產品矩陣、庫存季節性行事曆、前 90 天社群執行計畫
     </footer>
   </section>
 
