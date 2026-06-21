@@ -1,0 +1,15 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "cd /Users/rr/三能戶外/sanneng-outdoor-research && case \"${CLAUDE_TOOL_INPUT_FILE_PATH}\" in *.md) python3 validate.py;; esac"
+          }
+        ]
+      }
+    ]
+  }
+}
