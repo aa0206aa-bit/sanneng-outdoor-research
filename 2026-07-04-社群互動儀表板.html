@@ -1,0 +1,679 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>三能戶外｜90 天社群互動儀表板</title>
+<style>
+  :root{
+    color-scheme: light dark;
+    --page:#f9f9f7; --surface:#fcfcfb;
+    --ink-1:#0b0b0b; --ink-2:#52514e; --muted:#898781;
+    --grid:#e1e0d9; --axis:#c3c2b7; --border:rgba(11,11,11,.10);
+    --s-line:#2a78d6; --s-ig:#1baf7a; --s-fb:#eda100; --s-th:#008300;
+    --accent:#2a78d6; --meter-track:#cde2fb;
+    --good:#0ca30c; --warn:#fab219; --serious:#ec835a;
+    --delta-up:#006300; --delta-down:#d03b3b;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --page:#0d0d0d; --surface:#1a1a19;
+      --ink-1:#ffffff; --ink-2:#c3c2b7; --muted:#898781;
+      --grid:#2c2c2a; --axis:#383835; --border:rgba(255,255,255,.10);
+      --s-line:#3987e5; --s-ig:#199e70; --s-fb:#c98500; --s-th:#008300;
+      --accent:#3987e5; --meter-track:#104281;
+      --delta-up:#0ca30c; --delta-down:#d03b3b;
+    }
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    background:var(--page); color:var(--ink-1);
+    font:14px/1.55 system-ui,-apple-system,"Segoe UI","PingFang TC","Microsoft JhengHei",sans-serif;
+    padding:20px 16px 48px;
+  }
+  .wrap{max-width:1180px;margin:0 auto;display:flex;flex-direction:column;gap:14px}
+  .topbar{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:2px 2px 0}
+  .topbar h1{font-size:17px;font-weight:650}
+  .topbar .sub{color:var(--ink-2);font-size:12.5px;margin-top:2px}
+  .card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:16px 18px}
+  h2{font-size:13.5px;font-weight:650;color:var(--ink-1)}
+  .hint{font-size:12px;color:var(--muted);margin-top:1px}
+  button{
+    font:inherit;font-size:12.5px;color:var(--ink-1);
+    background:var(--surface);border:1px solid var(--border);border-radius:7px;
+    padding:6px 12px;cursor:pointer;
+  }
+  button:hover{border-color:var(--axis)}
+  button.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+  /* ── 設定面板 ── */
+  #settingsPanel .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px;margin-top:10px}
+  label{display:block;font-size:12px;color:var(--ink-2);margin-bottom:3px}
+  input[type=date],input[type=number],input[type=text]{
+    width:100%;font:inherit;font-size:13px;color:var(--ink-1);
+    background:var(--page);border:1px solid var(--border);border-radius:7px;padding:6px 9px;
+  }
+  input:focus{outline:2px solid var(--accent);outline-offset:0}
+  .btnrow{display:flex;gap:8px;margin-top:12px;align-items:center;flex-wrap:wrap}
+  .msg{font-size:12.5px;color:var(--ink-2)}
+  /* ── KPI tiles ── */
+  .tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:14px}
+  .tile .t-label{font-size:12.5px;color:var(--ink-2)}
+  .tile .t-value{font-size:28px;font-weight:650;margin-top:2px}
+  .tile .t-delta{font-size:12px;margin-top:1px;color:var(--muted)}
+  .tile .t-delta .up{color:var(--delta-up);font-weight:600}
+  .tile .t-delta .down{color:var(--delta-down);font-weight:600}
+  .meter{height:6px;border-radius:3px;background:var(--meter-track);margin-top:10px;overflow:hidden}
+  .meter>div{height:100%;border-radius:3px;background:var(--accent)}
+  .t-foot{display:flex;justify-content:space-between;align-items:center;margin-top:6px;font-size:11.5px;color:var(--muted)}
+  .chip{display:inline-flex;align-items:center;gap:4px;font-size:11.5px;color:var(--ink-2)}
+  .chip .ic{font-style:normal;font-size:10px}
+  /* ── 圖表 ── */
+  .charts{display:grid;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));gap:14px}
+  figure.card{display:flex;flex-direction:column;gap:8px}
+  svg{display:block;width:100%;height:auto}
+  svg text{font-family:inherit}
+  .axis-t{font-size:10.5px;fill:var(--muted);font-variant-numeric:tabular-nums}
+  .dlabel{font-size:11.5px;fill:var(--ink-2);font-weight:600}
+  .gridline{stroke:var(--grid);stroke-width:1}
+  .baseline{stroke:var(--axis);stroke-width:1}
+  .hit{fill:transparent;cursor:crosshair}
+  .hit:focus{outline:none}
+  .hit:focus-visible{fill:color-mix(in srgb,var(--accent) 10%,transparent)}
+  .bar{transition:filter .1s}
+  .bar:hover{filter:brightness(1.12)}
+  .empty{color:var(--muted);font-size:12.5px;padding:26px 4px;text-align:center}
+  .multiples{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
+  .mini .m-head{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--ink-2)}
+  .mini .m-head .dot{width:9px;height:9px;border-radius:50%;flex:none}
+  .mini .m-head b{margin-left:auto;color:var(--ink-1);font-size:13px;font-weight:650}
+  /* ── 表單與表格 ── */
+  #entryForm .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(128px,1fr));gap:10px;margin-top:10px}
+  .table-wrap{overflow-x:auto;margin-top:10px}
+  table{border-collapse:collapse;width:100%;font-size:12.5px;white-space:nowrap}
+  th{color:var(--ink-2);font-weight:600;text-align:right;padding:6px 10px;border-bottom:1px solid var(--axis)}
+  th:first-child,td:first-child{text-align:left}
+  th.l,td.l{text-align:left}
+  td{padding:6px 10px;border-bottom:1px solid var(--grid);font-variant-numeric:tabular-nums;text-align:right;color:var(--ink-1)}
+  td.note{max-width:220px;overflow:hidden;text-overflow:ellipsis;color:var(--ink-2)}
+  td .del{border:none;background:none;color:var(--muted);cursor:pointer;font-size:13px;padding:2px 6px}
+  td .del:hover{color:var(--delta-down)}
+  /* ── 里程碑 ── */
+  .months{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-top:10px}
+  .month h3{font-size:12.5px;color:var(--ink-2);font-weight:650;display:flex;justify-content:space-between;border-bottom:1px solid var(--grid);padding-bottom:6px}
+  .month ul{list-style:none;margin-top:8px;display:flex;flex-direction:column;gap:6px}
+  .month li{display:flex;gap:8px;align-items:flex-start;font-size:12.5px;color:var(--ink-1)}
+  .month input[type=checkbox]{width:14px;height:14px;margin-top:2px;accent-color:var(--accent)}
+  .month li.done span{color:var(--muted);text-decoration:line-through}
+  /* ── tooltip ── */
+  .tooltip{
+    position:fixed;z-index:10;pointer-events:none;
+    background:var(--surface);border:1px solid var(--border);border-radius:8px;
+    box-shadow:0 4px 14px rgba(0,0,0,.14);padding:7px 10px;min-width:88px;
+  }
+  .tooltip .v{font-size:14px;font-weight:650;color:var(--ink-1)}
+  .tooltip .k{font-size:11.5px;color:var(--muted);margin-top:1px}
+  footer.card p{font-size:12px;color:var(--muted);margin-top:10px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="topbar">
+    <div>
+      <h1>三能戶外｜90 天社群互動儀表板</h1>
+      <p class="sub" id="daymeta"></p>
+    </div>
+    <button id="btnSettings" type="button">⚙ 設定</button>
+  </header>
+
+  <section class="card" id="settingsPanel" hidden>
+    <h2>設定</h2>
+    <p class="hint">目標為《行銷與社群優化建議》§5 建議初值，Month 1 末校準一次後凍結。</p>
+    <div class="grid">
+      <div><label for="setStart">90 天起算日</label><input type="date" id="setStart"></div>
+      <div><label for="setTLine">LINE 好友目標</label><input type="number" id="setTLine" min="0" step="1"></div>
+      <div><label for="setTUgc">UGC 曬單目標（則）</label><input type="number" id="setTUgc" min="0" step="1"></div>
+      <div><label for="setTOrd">首購訂單目標（電商團隊設定）</label><input type="number" id="setTOrd" min="0" step="1" placeholder="未設定"></div>
+    </div>
+    <div class="btnrow">
+      <button class="primary" id="setSave" type="button">儲存設定</button>
+      <button id="setCancel" type="button">取消</button>
+    </div>
+  </section>
+
+  <section class="tiles" id="tiles"></section>
+
+  <section class="charts">
+    <figure class="card" style="grid-column:1/-1">
+      <figcaption><h2>平台追蹤數／好友數</h2><p class="hint">小倍數圖（small multiples），各自刻度——四平台量級差過大，共用同一座標軸會壓扁小數列</p></figcaption>
+      <div class="multiples" id="multiples"></div>
+    </figure>
+    <figure class="card">
+      <figcaption><h2>IG 週互動率</h2><p class="hint">週互動數 ÷ 追蹤數，公式固定看趨勢</p></figcaption>
+      <div id="chartEngage"></div>
+    </figure>
+    <figure class="card">
+      <figcaption><h2>週首購訂單</h2><p class="hint">官網＋蝦皮＋開團合計</p></figcaption>
+      <div id="chartOrders"></div>
+    </figure>
+    <figure class="card">
+      <figcaption><h2>週發文數（全平台）</h2><p class="hint">IG＋FB＋Threads 合計</p></figcaption>
+      <div id="chartPosts"></div>
+    </figure>
+  </section>
+
+  <section class="card">
+    <h2>週資料輸入</h2>
+    <p class="hint">每週五填一筆；同一日期重填會覆寫該筆。欄位可留空，之後補填。</p>
+    <form id="entryForm">
+      <div class="grid">
+        <div><label for="fDate">週結日期＊</label><input type="date" id="fDate" required></div>
+        <div><label for="fLine">LINE 好友數</label><input type="number" id="fLine" min="0" step="1"></div>
+        <div><label for="fIg">IG 追蹤數</label><input type="number" id="fIg" min="0" step="1"></div>
+        <div><label for="fFb">FB 粉絲數</label><input type="number" id="fFb" min="0" step="1"></div>
+        <div><label for="fTh">Threads 追蹤數</label><input type="number" id="fTh" min="0" step="1"></div>
+        <div><label for="fEng">IG 週互動數</label><input type="number" id="fEng" min="0" step="1"></div>
+        <div><label for="fPosts">週發文數（全平台）</label><input type="number" id="fPosts" min="0" step="1"></div>
+        <div><label for="fUgc">UGC 曬單累計</label><input type="number" id="fUgc" min="0" step="1"></div>
+        <div><label for="fOrd">週首購訂單數</label><input type="number" id="fOrd" min="0" step="1"></div>
+        <div><label for="fNote">備註（開團／KOL／廣告）</label><input type="text" id="fNote" maxlength="60"></div>
+      </div>
+      <div class="btnrow">
+        <button class="primary" type="submit">儲存本週資料</button>
+        <span class="msg" id="formMsg"></span>
+      </div>
+    </form>
+  </section>
+
+  <section class="card">
+    <h2>歷史資料（圖表對照表）</h2>
+    <div class="table-wrap">
+      <table id="dataTable">
+        <thead><tr>
+          <th class="l">日期</th><th>LINE</th><th>IG</th><th>FB</th><th>Threads</th>
+          <th>IG 互動</th><th>互動率</th><th>發文</th><th>UGC 累計</th><th>訂單</th><th class="l">備註</th><th></th>
+        </tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <p class="hint" id="tableEmpty">尚無資料——在上方填入第一筆週快照。</p>
+  </section>
+
+  <section class="card">
+    <h2>90 天里程碑（修訂版計畫 §4.2）</h2>
+    <div class="months" id="months"></div>
+  </section>
+
+  <footer class="card">
+    <h2>資料管理</h2>
+    <div class="btnrow">
+      <button id="btnExport" type="button">匯出 JSON 備份</button>
+      <button id="btnImport" type="button">匯入 JSON</button>
+      <input type="file" id="fileImport" accept="application/json" hidden>
+      <button id="btnClear" type="button">清除全部資料</button>
+      <span class="msg" id="ioMsg"></span>
+    </div>
+    <p>數據只存在這台電腦的瀏覽器（localStorage），本 HTML 檔案不含任何營運數據。指定一台機器作為主帳本；換機或交接請用匯出／匯入。含實際數據的備份檔請勿放入公開 repo。</p>
+  </footer>
+
+</div>
+<div class="tooltip" id="tooltip" hidden><div class="v"></div><div class="k"></div></div>
+
+<script>
+'use strict';
+const KEY = 'sanneng-dash-v1';
+const $ = s => document.querySelector(s);
+const SVGNS = 'http://www.w3.org/2000/svg';
+
+const DEFAULTS = {
+  version: 1,
+  settings: { startDate: '2026-07-06', targetLine: 300, targetUgc: 30, targetOrders: null },
+  entries: [],   // {date, line, ig, fb, th, eng, posts, ugc, ord, note}
+  milestones: {}
+};
+
+const MILESTONES = [
+  { title: 'Month 1｜地基與觸點修正', items: [
+    ['m1-1','埋點：Meta Pixel＋GA4＋UTM 規範上線'],
+    ['m1-2','儀表板啟用並填入第 1 週數據'],
+    ['m1-3','LINE 三段旅程上線（出貨→開鍋→曬單）'],
+    ['m1-4','官網主標語替換為食安定位語'],
+    ['m1-5','Threads 重啟：每日 1 則、連續 4 週'],
+    ['m1-6','IG 視覺定稿＋Bio 更新＋Highlight 3 支'],
+    ['m1-7','NT$139 入門款材質確認與處置決策'],
+    ['m1-8','烘焙×露營種子名單 20–30 位'],
+  ]},
+  { title: 'Month 2｜種子與開團', items: [
+    ['m2-1','KOC／KOL 開箱 2–3 檔（每檔綁限時開團）'],
+    ['m2-2','種子體驗團出貨＋曬單回收 ≥10 則'],
+    ['m2-3','蝦皮開店＋流量型 SKU 上架'],
+    ['m2-4','「鈦的秘密」教育內容週更 ×4'],
+    ['m2-5','Threads 問答型互動維持日更'],
+    ['m2-6','發文時段與內容型態分析（≥4 週數據）'],
+  ]},
+  { title: 'Month 3｜轉換與覆盤', items: [
+    ['m3-1','KOC 最佳素材 ×3 彙整進素材庫'],
+    ['m3-2','付費測試（選配：單檔 ≥NT$30,000、滿 4 週）'],
+    ['m3-3','LINE 補件階梯首測'],
+    ['m3-4','B2B 尾牙客製方案發布'],
+    ['m3-5','FB 親子露營社團測評邀請'],
+    ['m3-6','Q4 節慶禮盒＋尾牙檔期排程'],
+    ['m3-7','90 天覆盤會議（對照本儀表板）'],
+  ]},
+];
+
+const PLATFORMS = [
+  { key:'line', name:'LINE 好友', color:'var(--s-line)' },
+  { key:'ig',   name:'IG 追蹤',   color:'var(--s-ig)' },
+  { key:'fb',   name:'FB 粉絲',   color:'var(--s-fb)' },
+  { key:'th',   name:'Threads',  color:'var(--s-th)' },
+];
+
+let store = load();
+
+function load(){
+  try{
+    const raw = localStorage.getItem(KEY);
+    if(!raw) return structuredClone(DEFAULTS);
+    const d = JSON.parse(raw);
+    return {
+      version: 1,
+      settings: Object.assign(structuredClone(DEFAULTS.settings), d.settings || {}),
+      entries: Array.isArray(d.entries) ? d.entries : [],
+      milestones: d.milestones && typeof d.milestones === 'object' ? d.milestones : {}
+    };
+  }catch(e){ return structuredClone(DEFAULTS); }
+}
+function save(){
+  store.entries.sort((a,b)=> a.date < b.date ? -1 : 1);
+  localStorage.setItem(KEY, JSON.stringify(store));
+}
+
+/* ── 小工具 ── */
+const fmt = n => n == null ? '—' : Number(n).toLocaleString('zh-TW');
+const fmtPct = n => n == null ? '—' : n.toFixed(1) + '%';
+const parseLocal = s => { const [y,m,d] = s.split('-').map(Number); return new Date(y, m-1, d); };
+const mmdd = s => s.slice(5).replace('-','/');
+function rate(e){ return (e && e.ig > 0 && e.eng != null) ? e.eng / e.ig * 100 : null; }
+function lastTwo(field){
+  const xs = store.entries.map(e => field === 'rate' ? rate(e) : e[field]).filter(v => v != null);
+  return [xs[xs.length-1] ?? null, xs[xs.length-2] ?? null];
+}
+function niceNum(x){ const p = 10 ** Math.floor(Math.log10(x)); const n = x/p; return (n<=1?1:n<=2?2:n<=5?5:10)*p; }
+function ticks(max){
+  if(!(max > 0)) return [0,1];
+  const step = niceNum(max/3), out = [];
+  for(let v=0; v <= max + step*0.999; v += step) out.push(+v.toFixed(6));
+  return out;
+}
+function el(tag, cls, text){
+  const n = document.createElement(tag);
+  if(cls) n.className = cls;
+  if(text != null) n.textContent = text;   // 使用者資料一律 textContent，防 XSS
+  return n;
+}
+function svgEl(tag, attrs){
+  const n = document.createElementNS(SVGNS, tag);
+  for(const k in attrs) n.setAttribute(k, attrs[k]);
+  return n;
+}
+
+/* ── tooltip（滑鼠與鍵盤 focus 共用）── */
+const tip = $('#tooltip');
+function tipShow(x, y, value, label){
+  tip.querySelector('.v').textContent = value;
+  tip.querySelector('.k').textContent = label;
+  tip.hidden = false;
+  const r = tip.getBoundingClientRect();
+  tip.style.left = Math.min(x + 12, innerWidth - r.width - 8) + 'px';
+  tip.style.top  = Math.max(8, Math.min(y + 12, innerHeight - r.height - 8)) + 'px';
+}
+function tipHide(){ tip.hidden = true; }
+addEventListener('scroll', tipHide, true);
+
+/* 命中區：比標記本身大（滿版直欄），pointer 與 focus 同內容 */
+function addHits(svg, W, H, n, xOf, onIndex, ariaOf){
+  for(let i=0; i<n; i++){
+    const w = n === 1 ? W : xOf(1) - xOf(0);
+    const r = svgEl('rect', { class:'hit', x: xOf(i) - w/2, y: 0, width: w, height: H, tabindex: 0, role:'img', 'aria-label': ariaOf(i) });
+    r.addEventListener('pointermove', ev => onIndex(i, ev.clientX, ev.clientY));
+    r.addEventListener('pointerleave', () => { tipHide(); svg.dispatchEvent(new CustomEvent('hitleave')); });
+    r.addEventListener('focus', () => { const b = r.getBoundingClientRect(); onIndex(i, b.x + b.width/2, b.y + 40); });
+    r.addEventListener('blur', () => { tipHide(); svg.dispatchEvent(new CustomEvent('hitleave')); });
+    svg.appendChild(r);
+  }
+}
+
+/* ── 折線圖（單序列＋游標吸附）── */
+function lineChart(container, data, { color, fmtV, big }){
+  container.replaceChildren();
+  if(data.length === 0){ container.appendChild(el('div','empty','尚無資料——填入第一筆週快照後出現趨勢')); return; }
+  const W = big ? 640 : 300, H = big ? 220 : 86;
+  const pad = big ? {t:20,r:52,b:26,l:44} : {t:12,r:16,b:8,l:8};
+  const plotW = W - pad.l - pad.r, plotH = H - pad.t - pad.b;
+  const svg = svgEl('svg', { viewBox:`0 0 ${W} ${H}`, role:'group' });
+
+  const vals = data.map(d => d.v);
+  let lo = Math.min(...vals), hi = Math.max(...vals);
+  let tk = null;
+  if(big){ tk = ticks(hi); lo = 0; hi = tk[tk.length-1]; }
+  else if(lo === hi){ lo -= 1; hi += 1; } else { const p = (hi-lo)*0.15; lo -= p; hi += p; }
+
+  const xOf = i => pad.l + (data.length === 1 ? plotW/2 : plotW * i/(data.length-1));
+  const yOf = v => pad.t + plotH * (1 - (v-lo)/(hi-lo));
+
+  if(big){
+    for(const t of tk){
+      svg.appendChild(svgEl('line', { class: t===0?'baseline':'gridline', x1:pad.l, x2:W-pad.r, y1:yOf(t), y2:yOf(t) }));
+      const lbl = svgEl('text', { class:'axis-t', x:pad.l-6, y:yOf(t)+3.5, 'text-anchor':'end' });
+      lbl.textContent = fmtV(t); svg.appendChild(lbl);
+    }
+    const step = Math.ceil(data.length/6);
+    data.forEach((d,i) => {
+      if(i % step && i !== data.length-1) return;
+      const lbl = svgEl('text', { class:'axis-t', x:xOf(i), y:H-8, 'text-anchor':'middle' });
+      lbl.textContent = mmdd(d.date); svg.appendChild(lbl);
+    });
+  } else {
+    svg.appendChild(svgEl('line', { class:'baseline', x1:pad.l, x2:W-pad.r, y1:H-pad.b, y2:H-pad.b }));
+  }
+
+  const path = data.map((d,i) => `${i?'L':'M'}${xOf(i)},${yOf(d.v)}`).join(' ');
+  svg.appendChild(svgEl('path', { d:path, fill:'none', stroke:color, 'stroke-width':2, 'stroke-linecap':'round', 'stroke-linejoin':'round' }));
+
+  const cross = svgEl('line', { class:'gridline', y1:pad.t, y2:pad.t+plotH, visibility:'hidden' });
+  if(big) svg.appendChild(cross);
+  svg.addEventListener('hitleave', () => cross.setAttribute('visibility','hidden'));
+
+  data.forEach((d,i) => {
+    const endpoint = i === data.length-1;
+    if(big || endpoint)
+      svg.appendChild(svgEl('circle', { cx:xOf(i), cy:yOf(d.v), r:4.5, fill:color, stroke:'var(--surface)', 'stroke-width':2 }));
+    if(big && endpoint){
+      const lbl = svgEl('text', { class:'dlabel', x:xOf(i), y:yOf(d.v)-11, 'text-anchor': i ? 'end' : 'middle' });
+      lbl.textContent = fmtV(d.v); svg.appendChild(lbl);
+    }
+  });
+
+  addHits(svg, W, H, data.length, xOf,
+    (i, cx, cy) => {
+      if(big){ cross.setAttribute('x1', xOf(i)); cross.setAttribute('x2', xOf(i)); cross.setAttribute('visibility','visible'); }
+      tipShow(cx, cy, fmtV(data[i].v), mmdd(data[i].date));
+    },
+    i => `${mmdd(data[i].date)} ${fmtV(data[i].v)}`);
+  container.appendChild(svg);
+}
+
+/* ── 長條圖（單序列、細條、圓角資料端）── */
+function barChart(container, data, { fmtV }){
+  container.replaceChildren();
+  if(data.length === 0){ container.appendChild(el('div','empty','尚無資料——填入第一筆週快照後出現趨勢')); return; }
+  const W = 640, H = 220, pad = {t:20,r:16,b:26,l:44};
+  const plotW = W - pad.l - pad.r, plotH = H - pad.t - pad.b;
+  const svg = svgEl('svg', { viewBox:`0 0 ${W} ${H}`, role:'group' });
+
+  const tk = ticks(Math.max(...data.map(d => d.v)));
+  const hi = tk[tk.length-1];
+  const slot = plotW / data.length;
+  const barW = Math.min(24, slot * 0.62);
+  const xOf = i => pad.l + slot*i + slot/2;
+  const yOf = v => pad.t + plotH * (1 - v/hi);
+
+  for(const t of tk){
+    svg.appendChild(svgEl('line', { class: t===0?'baseline':'gridline', x1:pad.l, x2:W-pad.r, y1:yOf(t), y2:yOf(t) }));
+    const lbl = svgEl('text', { class:'axis-t', x:pad.l-6, y:yOf(t)+3.5, 'text-anchor':'end' });
+    lbl.textContent = fmtV(t); svg.appendChild(lbl);
+  }
+  const step = Math.ceil(data.length/6);
+  data.forEach((d,i) => {
+    if(i % step && i !== data.length-1) return;
+    const lbl = svgEl('text', { class:'axis-t', x:xOf(i), y:H-8, 'text-anchor':'middle' });
+    lbl.textContent = mmdd(d.date); svg.appendChild(lbl);
+  });
+
+  data.forEach((d,i) => {
+    if(d.v <= 0) return;
+    const x = xOf(i) - barW/2, y = yOf(d.v), y0 = yOf(0);
+    const r = Math.min(4, barW/2, y0 - y);
+    svg.appendChild(svgEl('path', { class:'bar',
+      d:`M${x},${y0} L${x},${y+r} Q${x},${y} ${x+r},${y} L${x+barW-r},${y} Q${x+barW},${y} ${x+barW},${y+r} L${x+barW},${y0} Z`,
+      fill:'var(--accent)' }));
+    if(i === data.length-1){
+      const lbl = svgEl('text', { class:'dlabel', x:xOf(i), y:y-6, 'text-anchor':'middle' });
+      lbl.textContent = fmtV(d.v); svg.appendChild(lbl);
+    }
+  });
+
+  addHits(svg, W, H, data.length, xOf,
+    (i, cx, cy) => tipShow(cx, cy, fmtV(data[i].v), mmdd(data[i].date)),
+    i => `${mmdd(data[i].date)} ${fmtV(data[i].v)}`);
+  container.appendChild(svg);
+}
+
+/* ── KPI tiles ── */
+function paceChip(current, target){
+  const s = store.settings;
+  const elapsed = Math.min(90, Math.max(1, Math.floor((Date.now() - parseLocal(s.startDate)) / 864e5) + 1));
+  const expected = target * elapsed / 90;
+  const ratio = expected > 0 ? current / expected : 0;
+  const [ic, txt, col] = ratio >= 1 ? ['▲','超前','var(--good)'] : ratio >= 0.8 ? ['●','接近','var(--warn)'] : ['▼','落後','var(--serious)'];
+  const chip = el('span','chip');
+  const i = el('i','ic', ic); i.style.color = col;
+  chip.append(i, el('span', null, `節奏：${txt}`));
+  return chip;
+}
+function tile({ label, value, deltaTxt, deltaDir, target, current, targetHint }){
+  const t = el('div','card tile');
+  t.appendChild(el('div','t-label', label));
+  t.appendChild(el('div','t-value', value));
+  const d = el('div','t-delta');
+  if(deltaTxt){ const s = el('span', deltaDir, deltaTxt); d.appendChild(s); d.append(' vs 上週'); }
+  else d.textContent = '尚無前一週資料';
+  t.appendChild(d);
+  if(target > 0){
+    const m = el('div','meter'), f = el('div');
+    f.style.width = Math.min(100, current/target*100).toFixed(1) + '%';
+    m.appendChild(f); t.appendChild(m);
+    const foot = el('div','t-foot');
+    foot.appendChild(el('span', null, `目標 ${fmt(target)}（${Math.min(999, Math.round(current/target*100))}%）`));
+    if(store.entries.length) foot.appendChild(paceChip(current, target));
+    t.appendChild(foot);
+  } else if(targetHint){
+    const foot = el('div','t-foot'); foot.appendChild(el('span', null, targetHint)); t.appendChild(foot);
+  }
+  return t;
+}
+function renderTiles(){
+  const s = store.settings, box = $('#tiles');
+  box.replaceChildren();
+  const [line, linePrev] = lastTwo('line');
+  const [ugc, ugcPrev] = lastTwo('ugc');
+  const [rNow, rPrev] = lastTwo('rate');
+  const orders = store.entries.reduce((a,e) => a + (e.ord || 0), 0);
+  const [oNow, oPrev] = lastTwo('ord');
+  const delta = (a,b,unit) => a==null||b==null ? [null,null] :
+    [`${a-b>=0?'▲ +':'▼ '}${unit==='pp' ? (a-b).toFixed(1)+' pp' : fmt(a-b)}`, a-b>=0?'up':'down'];
+
+  let [dt, dd] = delta(line, linePrev);
+  box.appendChild(tile({ label:'LINE 好友數', value:fmt(line), deltaTxt:dt, deltaDir:dd, target:s.targetLine, current:line||0 }));
+  [dt, dd] = delta(ugc, ugcPrev);
+  box.appendChild(tile({ label:'UGC 曬單累計', value:fmt(ugc), deltaTxt:dt, deltaDir:dd, target:s.targetUgc, current:ugc||0 }));
+  [dt, dd] = delta(oNow, oPrev);
+  box.appendChild(tile({ label:'首購訂單累計', value:fmt(orders), deltaTxt:dt ? dt+'（週訂單）' : null, deltaDir:dd,
+    target:s.targetOrders, current:orders, targetHint:'目標未設定——設定 > 首購訂單目標' }));
+  [dt, dd] = delta(rNow, rPrev, 'pp');
+  box.appendChild(tile({ label:'IG 週互動率（最新週）', value:fmtPct(rNow), deltaTxt:dt, deltaDir:dd,
+    targetHint:'不設絕對值目標，看趨勢向上' }));
+}
+
+/* ── 圖表區 ── */
+function renderCharts(){
+  const mbox = $('#multiples');
+  mbox.replaceChildren();
+  for(const p of PLATFORMS){
+    const wrap = el('div','mini');
+    const head = el('div','m-head');
+    const dot = el('span','dot'); dot.style.background = p.color;
+    head.append(dot, el('span', null, p.name), el('b', null, fmt(lastTwo(p.key)[0])));
+    wrap.appendChild(head);
+    const c = el('div');
+    wrap.appendChild(c);
+    lineChart(c, store.entries.filter(e => e[p.key] != null).map(e => ({date:e.date, v:e[p.key]})), { color:p.color, fmtV:fmt, big:false });
+    mbox.appendChild(wrap);
+  }
+  lineChart($('#chartEngage'),
+    store.entries.map(e => ({date:e.date, v:rate(e)})).filter(d => d.v != null),
+    { color:'var(--s-ig)', fmtV:fmtPct, big:true });
+  barChart($('#chartOrders'), store.entries.filter(e => e.ord != null).map(e => ({date:e.date, v:e.ord})), { fmtV:fmt });
+  barChart($('#chartPosts'), store.entries.filter(e => e.posts != null).map(e => ({date:e.date, v:e.posts})), { fmtV:fmt });
+}
+
+/* ── 資料表 ── */
+function renderTable(){
+  const tb = $('#dataTable tbody');
+  tb.replaceChildren();
+  $('#tableEmpty').hidden = store.entries.length > 0;
+  for(const e of store.entries){
+    const tr = el('tr');
+    tr.appendChild(el('td','l', e.date));
+    for(const v of [e.line, e.ig, e.fb, e.th, e.eng]) tr.appendChild(el('td', null, fmt(v)));
+    tr.appendChild(el('td', null, fmtPct(rate(e))));
+    for(const v of [e.posts, e.ugc, e.ord]) tr.appendChild(el('td', null, fmt(v)));
+    tr.appendChild(el('td','l note', e.note || ''));
+    const td = el('td'), btn = el('button','del','✕');
+    btn.type = 'button'; btn.title = '刪除 ' + e.date;
+    btn.addEventListener('click', () => { store.entries = store.entries.filter(x => x !== e); save(); renderAll(); });
+    td.appendChild(btn); tr.appendChild(td);
+    tb.appendChild(tr);
+  }
+}
+
+/* ── 里程碑 ── */
+function renderMilestones(){
+  const box = $('#months');
+  box.replaceChildren();
+  for(const m of MILESTONES){
+    const done = m.items.filter(([id]) => store.milestones[id]).length;
+    const sec = el('div','month');
+    const h = el('h3'); h.append(el('span', null, m.title), el('span', null, `${done}/${m.items.length}`));
+    sec.appendChild(h);
+    const ul = el('ul');
+    for(const [id, label] of m.items){
+      const li = el('li', store.milestones[id] ? 'done' : null);
+      const cb = document.createElement('input');
+      cb.type = 'checkbox'; cb.checked = !!store.milestones[id]; cb.id = 'cb-' + id;
+      cb.addEventListener('change', () => { store.milestones[id] = cb.checked; save(); renderMilestones(); });
+      const lb = document.createElement('label');
+      lb.htmlFor = cb.id; lb.style.margin = '0'; lb.style.fontSize = '12.5px'; lb.style.color = 'inherit';
+      lb.appendChild(el('span', null, label));
+      li.append(cb, lb); ul.appendChild(li);
+    }
+    sec.appendChild(ul); box.appendChild(sec);
+  }
+}
+
+/* ── 標頭 ── */
+function renderHeader(){
+  const s = store.settings;
+  const start = parseLocal(s.startDate);
+  const day = Math.floor((Date.now() - start) / 864e5) + 1;
+  const state = day < 1 ? `尚未開始（起算 ${s.startDate}）` : day > 90 ? `已滿 90 天（起算 ${s.startDate}）` : `第 ${day}／90 天`;
+  $('#daymeta').textContent = `${state} · 每週五填數 · 週一看板會`;
+}
+
+function renderAll(){ renderHeader(); renderTiles(); renderCharts(); renderTable(); renderMilestones(); }
+
+/* ── 表單 ── */
+$('#entryForm').addEventListener('submit', ev => {
+  ev.preventDefault();
+  const num = id => { const v = $(id).value.trim(); return v === '' ? null : Math.max(0, Math.round(Number(v))); };
+  const entry = {
+    date: $('#fDate').value,
+    line: num('#fLine'), ig: num('#fIg'), fb: num('#fFb'), th: num('#fTh'),
+    eng: num('#fEng'), posts: num('#fPosts'), ugc: num('#fUgc'), ord: num('#fOrd'),
+    note: $('#fNote').value.trim()
+  };
+  const existed = store.entries.some(e => e.date === entry.date);
+  store.entries = store.entries.filter(e => e.date !== entry.date);
+  store.entries.push(entry);
+  save(); renderAll();
+  $('#formMsg').textContent = (existed ? '已覆寫 ' : '已儲存 ') + entry.date;
+  ev.target.reset();
+});
+
+/* ── 設定 ── */
+$('#btnSettings').addEventListener('click', () => {
+  const p = $('#settingsPanel'), s = store.settings;
+  p.hidden = !p.hidden;
+  if(!p.hidden){
+    $('#setStart').value = s.startDate;
+    $('#setTLine').value = s.targetLine ?? '';
+    $('#setTUgc').value = s.targetUgc ?? '';
+    $('#setTOrd').value = s.targetOrders ?? '';
+  }
+});
+$('#setCancel').addEventListener('click', () => { $('#settingsPanel').hidden = true; });
+$('#setSave').addEventListener('click', () => {
+  const s = store.settings;
+  if($('#setStart').value) s.startDate = $('#setStart').value;
+  const num = id => { const v = $(id).value.trim(); return v === '' ? null : Math.max(0, Math.round(Number(v))); };
+  s.targetLine = num('#setTLine'); s.targetUgc = num('#setTUgc'); s.targetOrders = num('#setTOrd');
+  save(); renderAll();
+  $('#settingsPanel').hidden = true;
+});
+
+/* ── 匯出／匯入／清除 ── */
+$('#btnExport').addEventListener('click', () => {
+  const d = new Date(), z = n => String(n).padStart(2,'0');
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(new Blob([JSON.stringify(store, null, 2)], { type:'application/json' }));
+  a.download = `sanneng-dashboard-備份-${d.getFullYear()}${z(d.getMonth()+1)}${z(d.getDate())}.json`;
+  a.click(); URL.revokeObjectURL(a.href);
+  $('#ioMsg').textContent = '已匯出備份（含實際數據，勿放公開 repo）';
+});
+$('#btnImport').addEventListener('click', () => $('#fileImport').click());
+$('#fileImport').addEventListener('change', ev => {
+  const f = ev.target.files[0];
+  if(!f) return;
+  const rd = new FileReader();
+  rd.onload = () => {
+    try{
+      const d = JSON.parse(rd.result);
+      if(d.version !== 1 || !Array.isArray(d.entries)) throw new Error('bad shape');
+      store = {
+        version: 1,
+        settings: Object.assign(structuredClone(DEFAULTS.settings), d.settings || {}),
+        entries: d.entries.filter(e => e && typeof e.date === 'string'),
+        milestones: d.milestones && typeof d.milestones === 'object' ? d.milestones : {}
+      };
+      save(); renderAll();
+      $('#ioMsg').textContent = `匯入成功：${store.entries.length} 筆週資料`;
+    }catch(e){ $('#ioMsg').textContent = '匯入失敗：檔案格式不符（需為本儀表板匯出的 JSON）'; }
+    ev.target.value = '';
+  };
+  rd.readAsText(f);
+});
+let clearArmed = null;
+$('#btnClear').addEventListener('click', () => {
+  const b = $('#btnClear');
+  if(clearArmed){
+    clearTimeout(clearArmed); clearArmed = null;
+    localStorage.removeItem(KEY);
+    store = structuredClone(DEFAULTS);
+    renderAll();
+    b.textContent = '清除全部資料';
+    $('#ioMsg').textContent = '已清除（未匯出的數據無法復原）';
+  } else {
+    b.textContent = '再按一次確認清除';
+    $('#ioMsg').textContent = '確認要清除？5 秒內再按一次生效';
+    clearArmed = setTimeout(() => { clearArmed = null; b.textContent = '清除全部資料'; $('#ioMsg').textContent = ''; }, 5000);
+  }
+});
+
+/* ── 初始 ── */
+$('#fDate').value = new Date().toISOString().slice(0,10);
+renderAll();
+</script>
+</body>
+</html>
