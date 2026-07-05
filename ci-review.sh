@@ -3,7 +3,7 @@
 
 set -e
 
-REPORT="2026-06-18-三能戶外市場研究報告.md"
+REPORT="2026-06-18-sanneng-outdoor-report.md"
 EXIT_CODE=0
 
 echo "=== Step 1: 格式驗證 ==="

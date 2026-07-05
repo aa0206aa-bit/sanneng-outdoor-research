@@ -4,7 +4,7 @@
 import re
 import sys
 
-REPORT = "2026-06-18-三能戶外市場研究報告.md"
+REPORT = "2026-06-18-sanneng-outdoor-report.md"
 
 def load(path):
     with open(path, encoding="utf-8") as f:
