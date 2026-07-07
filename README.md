@@ -11,6 +11,7 @@
 | `2026-07-04-marketing-social-optimization.md` | 行銷與社團經營視角的執行層調整、修訂版 90 天計畫與 KPI |
 | `2026-07-04-social-dashboard-spec.md` | 儀表板指標定義、操作節奏與資料隱私規格 |
 | `2026-07-04-social-dashboard.html` | 90 天 KPI 追蹤儀表板，單檔離線可用，數據僅存於瀏覽器本機 |
+| `2026-07-07-competitor-social-audit.md` | 五家競品社群發文策略實查、逐家解讀與戰略啟示 |
 
 ## 報告架構（10 章）
 
