@@ -19,6 +19,7 @@
 | `2026-07-15-batch2-scene-prompts.md` | 第二批場景 prompts |
 | `2026-07-15-product-cards-copy.md` | 產品卡文案 |
 | `2026-07-15-knowledge-cards-template.html` | 知識卡模板（HTML） |
+| `2026-07-26-brand-identity.md` | 品牌識別平台 v0.1 提案版（核心／靈魂／VIS／語調／接觸點），待管理層拍板 |
 
 ## 報告架構（10 章）
 
