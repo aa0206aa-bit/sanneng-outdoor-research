@@ -1,0 +1,368 @@
+<title>三能戶外 30 天貼文內容手冊</title>
+<style>
+  :root {
+    --bg:#F5F2EC; --surface:#FDFCF8; --surface-2:#F0ECE1;
+    --ink:#232E28; --ink-soft:#5C6359; --ink-faint:#8A8F86; --line:#E2DCCE;
+    --accent:#314235;
+    --c-life:#314235; --c-prod:#71767B; --c-reci:#80674B; --c-know:#5F6F53;
+    --f-single:#71767B; --f-reels:#A85D4C; --f-carousel:#5F6F53;
+    --font-display:Georgia,"Times New Roman",serif;
+    --font-sans:-apple-system,BlinkMacSystemFont,"PingFang TC","Heiti TC","Microsoft JhengHei","Noto Sans TC",sans-serif;
+    --shadow:0 1px 2px rgba(35,46,40,.05),0 8px 24px rgba(35,46,40,.06);
+  }
+  @media (prefers-color-scheme:dark){:root{
+    --bg:#171F1A; --surface:#202A24; --surface-2:#26312A;
+    --ink:#ECE8DE; --ink-soft:#AEB4A8; --ink-faint:#7C8379; --line:#333E36;
+    --accent:#8FB49A;
+    --c-life:#7FA187; --c-prod:#A9AEB3; --c-reci:#B4936E; --c-know:#93A385;
+    --f-single:#A9AEB3; --f-reels:#D08A78; --f-carousel:#93A385;
+    --shadow:0 1px 2px rgba(0,0,0,.25),0 10px 30px rgba(0,0,0,.30);
+  }}
+  :root[data-theme="light"]{
+    --bg:#F5F2EC; --surface:#FDFCF8; --surface-2:#F0ECE1;
+    --ink:#232E28; --ink-soft:#5C6359; --ink-faint:#8A8F86; --line:#E2DCCE; --accent:#314235;
+    --c-life:#314235; --c-prod:#71767B; --c-reci:#80674B; --c-know:#5F6F53;
+    --f-single:#71767B; --f-reels:#A85D4C; --f-carousel:#5F6F53;
+    --shadow:0 1px 2px rgba(35,46,40,.05),0 8px 24px rgba(35,46,40,.06);
+  }
+  :root[data-theme="dark"]{
+    --bg:#171F1A; --surface:#202A24; --surface-2:#26312A;
+    --ink:#ECE8DE; --ink-soft:#AEB4A8; --ink-faint:#7C8379; --line:#333E36; --accent:#8FB49A;
+    --c-life:#7FA187; --c-prod:#A9AEB3; --c-reci:#B4936E; --c-know:#93A385;
+    --f-single:#A9AEB3; --f-reels:#D08A78; --f-carousel:#93A385;
+    --shadow:0 1px 2px rgba(0,0,0,.25),0 10px 30px rgba(0,0,0,.30);
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;}
+  .page{background:var(--bg);color:var(--ink);font-family:var(--font-sans);line-height:1.62;-webkit-font-smoothing:antialiased;padding:clamp(20px,5vw,52px) 20px 72px;}
+  .wrap{max-width:780px;margin:0 auto;}
+  .head{border-bottom:1px solid var(--line);padding-bottom:24px;margin-bottom:26px;}
+  .brandline{display:flex;gap:12px;flex-wrap:wrap;text-transform:uppercase;letter-spacing:.2em;font-size:.7rem;font-family:var(--font-display);color:var(--ink-soft);}
+  .brandline .mtn{color:var(--accent);}
+  h1{font-weight:800;font-size:clamp(1.7rem,4.2vw,2.5rem);line-height:1.14;letter-spacing:-.01em;text-wrap:balance;margin:14px 0 10px;}
+  h1 .v{color:var(--ink-faint);font-weight:600;font-size:.5em;font-family:var(--font-display);font-style:italic;}
+  .lede{color:var(--ink-soft);max-width:62ch;margin:0;font-size:1.02rem;}
+  .lede b{color:var(--ink);}
+  .legend{display:flex;gap:8px 16px;flex-wrap:wrap;margin:20px 0 4px;font-size:.8rem;color:var(--ink-soft);}
+  .legend span{display:inline-flex;align-items:center;gap:6px;}
+  .dot{width:10px;height:10px;border-radius:3px;display:inline-block;}
+  .stat{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px;}
+  .stat b{font-family:var(--font-display);}
+  .chip{font-size:.74rem;padding:4px 10px;border-radius:20px;background:var(--surface-2);color:var(--ink-soft);border:1px solid var(--line);}
+
+  .posts{display:flex;flex-direction:column;gap:16px;margin-top:26px;}
+  .post{background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--cat,var(--accent));border-radius:10px;padding:16px 18px 15px;box-shadow:var(--shadow);}
+  .phead{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:12px;}
+  .dnum{font-family:var(--font-display);font-weight:700;font-size:1.15rem;font-variant-numeric:tabular-nums;}
+  .dnum small{font-size:.6em;color:var(--ink-faint);font-style:italic;}
+  .cat-tag{font-family:var(--font-display);text-transform:uppercase;letter-spacing:.1em;font-size:.62rem;font-weight:700;color:var(--cat);}
+  .pill{font-size:.66rem;padding:2px 8px;border-radius:5px;font-weight:700;letter-spacing:.02em;}
+  .pill.fmt{color:#fff;}
+  .pill.plat{background:var(--surface-2);color:var(--ink-soft);font-family:var(--font-display);}
+  .pill.cta{background:transparent;color:var(--ink-faint);border:1px dashed var(--line);}
+  .spacer{flex:1;}
+  .hook{font-size:1.12rem;font-weight:700;line-height:1.4;letter-spacing:-.005em;margin:0 0 10px;text-wrap:pretty;}
+  .hook::before{content:"“";font-family:var(--font-display);color:var(--cat,var(--accent));margin-right:1px;}
+  .hook::after{content:"”";font-family:var(--font-display);color:var(--cat,var(--accent));}
+  .copy{white-space:pre-line;color:var(--ink-soft);font-size:.94rem;margin:0;}
+  .caption{color:var(--ink-soft);font-size:.9rem;margin:10px 0 0;padding-top:10px;border-top:1px dashed var(--line);}
+  .caption b{color:var(--ink);font-family:var(--font-display);font-size:.78rem;letter-spacing:.04em;text-transform:uppercase;}
+  .board{width:100%;border-collapse:collapse;font-size:.88rem;margin:2px 0 0;}
+  .board td{padding:5px 8px;border-top:1px solid var(--line);vertical-align:top;color:var(--ink-soft);}
+  .board td:first-child{font-family:var(--font-display);color:var(--f-reels);white-space:nowrap;font-variant-numeric:tabular-nums;width:56px;}
+  .board td:last-child{color:var(--ink);font-weight:600;}
+  .slides{margin:2px 0 0;padding:0;list-style:none;counter-reset:s;display:flex;flex-direction:column;gap:6px;}
+  .slides li{counter-increment:s;position:relative;padding-left:34px;font-size:.9rem;color:var(--ink-soft);min-height:22px;display:flex;align-items:center;}
+  .slides li::before{content:counter(s);position:absolute;left:0;top:0;width:23px;height:23px;border-radius:6px;background:var(--surface-2);color:var(--f-carousel);border:1px solid var(--line);font-family:var(--font-display);font-size:.74rem;font-weight:700;display:flex;align-items:center;justify-content:center;}
+  .slides li.cover{font-weight:700;color:var(--ink);}
+  .slides li.cover::before{background:var(--f-carousel);color:#fff;}
+  .pfoot{margin-top:12px;padding-top:10px;border-top:1px solid var(--line);font-size:.8rem;color:var(--ink-faint);}
+  .pfoot b{color:var(--ink-soft);font-family:var(--font-display);text-transform:uppercase;letter-spacing:.06em;font-size:.7rem;}
+
+  .foot{margin-top:44px;padding-top:22px;border-top:1px solid var(--line);}
+  .tagline{font-family:var(--font-display);font-style:italic;font-size:1.05rem;}
+  .tagfoot{text-transform:uppercase;letter-spacing:.2em;font-size:.66rem;color:var(--ink-faint);font-family:var(--font-display);margin-top:6px;}
+  @media (max-width:520px){.board td:first-child{width:auto;}}
+</style>
+
+<div class="page">
+  <div class="wrap">
+    <header class="head">
+      <div class="brandline"><span class="mtn">▲ SANNENG OUTDOOR</span><span>30-DAY POST SCRIPTS</span></div>
+      <h1>30 天貼文內容手冊 <span class="v">v1・可執行版</span></h1>
+      <p class="lede">每篇都是 <b>hook 前置＋短文案</b>，按內容選最適格式：食安走輪播、Challenge 與 DIY 走 Reels、情境走單圖。口吻是「一個做食器的媽媽，跟朋友分享」。照著發即可。</p>
+      <div class="legend">
+        <span><i class="dot" style="background:var(--c-life)"></i>生活</span>
+        <span><i class="dot" style="background:var(--c-prod)"></i>產品</span>
+        <span><i class="dot" style="background:var(--c-reci)"></i>食譜</span>
+        <span><i class="dot" style="background:var(--c-know)"></i>知識</span>
+      </div>
+      <div class="stat" id="stat"></div>
+    </header>
+    <main class="posts" id="posts"></main>
+    <section style="background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:20px 22px;margin:40px 0 0;box-shadow:var(--shadow);">
+      <h2 style="font-size:1.35rem;margin:0 0 4px;">Hashtag 策略</h2>
+      <p style="color:var(--ink-soft);font-size:.9rem;margin:0 0 16px;line-height:1.6;">每篇公式：<b>核心 4</b> ＋ <b>大眾選 3–5</b> ＋ <b>該類主題選 3–5</b>（IG 共 10–15 個；FB 挑 3–5 個放留言區）。</p>
+      <div style="font-size:.86rem;line-height:1.9;color:var(--ink);">
+        <p style="margin:0 0 8px;"><b style="color:var(--accent);">核心・每篇必放</b><br>#三能戶外 #SANNENGOUTDOOR #純鈦餐具 #露營廚房</p>
+        <p style="margin:0 0 8px;"><b style="color:var(--accent);">大眾流量・選 3–5</b><br>#露營 #camping #露營生活 #親子露營 #家庭露營 #戶外生活 #露營裝備</p>
+        <p style="margin:0 0 8px;"><b style="color:var(--c-prod);">📦 產品</b>　#純鈦 #鈦餐具 #露營杯 #輕量化 #露營必備</p>
+        <p style="margin:0 0 8px;"><b style="color:var(--c-reci);">🍳 食譜</b>　#露營料理 #露營美食 #野炊 #戶外料理 #露營食譜</p>
+        <p style="margin:0 0 8px;"><b style="color:var(--c-know);">💡 食安</b>　#食安 #無塗層 #兒童餐具 #親子餐具 #食品安全</p>
+        <p style="margin:0;"><b style="color:var(--c-life);">🏕️ 生活</b>　#親子共遊 #露營日常 #帶孩子露營 #溪邊露營 #山林生活</p>
+      </div>
+      <p style="color:var(--ink-faint);font-size:.82rem;margin:14px 0 0;line-height:1.6;border-top:1px solid var(--line);padding-top:12px;">⚠️ <b>熱門度會變、需自行驗證</b>：發文前在 IG 搜尋框打標籤看「貼文數」，混搭大流量（&gt;10 萬・曝光廣但競爭大）＋中流量（1–10 萬・精準）＋小眾（&lt;1 萬・容易被看到）。別每篇都用同一組，會被降觸及。</p>
+    </section>
+
+    <footer class="foot">
+      <div class="tagline">從心出發，到哪裡都是家。</div>
+      <div class="tagfoot">Titanium Made ・ Food Safe ・ Outdoor Lifestyle</div>
+    </footer>
+  </div>
+</div>
+
+<script>
+const P = [
+{d:1,cat:"life",fmt:"單圖",plat:"FB",cta:"追蹤",hook:"我做了幾十年餐桌器具，卻在第一次帶全家露營時，被一個「碗」打敗。",
+copy:`那餐，孩子的塑膠碗一裝熱湯就一股怪味，最小的皺著眉頭說不要喝。在外面，連「好好吃頓飯」都變好難。
+
+所以有了這個帳號。它不是型錄，是一個做食器的媽媽的露營筆記——踩過的雷、真正好用的東西、給孩子吃得安心的方法，還有我在山上亂試的食譜。
+
+再累也想帶孩子出去走走的話，就留下來吧。
+從心出發，到哪裡都是家。`,
+prod:"雙層杯300、折疊雪拉碗450（開篇也可拍 Reels：塑膠碗翻車→換鈦杯→全家笑著吃飯）"},
+
+{d:2,cat:"prod",fmt:"Reels",plat:"IG",cta:"官網會員",hook:"我背包裡只有一個杯子。",
+board:[["0–3s","晨光，手沖咖啡注入純鈦單層杯、蒸氣裊裊","我背包裡只有一個杯子"],["3–6s","喝咖啡、收帳、移動（快剪日常）","因為它一個抵三個"],["6–10s","中午，同一個杯子裝熱湯冒煙","同一個杯子，不用洗、不串味"],["10–14s","特寫鈦質感、單手拿、丟進背包","純鈦・無塗層・沒有金屬味"],["結尾","杯子放營地桌、家人背景虛化","450ml 剛剛好｜LINE 領新朋友 100 元"]],
+caption:"早上咖啡、中午湯，同一個杯子不用洗——因為純鈦不串味。大概是我背包裡 CP 值最高的東西。加入官網會員送 100 購物金，先領再說。",
+prod:"純鈦單層鈦杯 450ml（404002）"},
+
+{d:3,cat:"know",fmt:"輪播",plat:"FB",cta:"追蹤",hook:"孩子喝一口就吐掉的水。",
+slides:["孩子喝一口就吐掉的水　——不是水的問題","我聞了一下，一股鐵味，就是不鏽鋼瓶放久的那種","那不是水的問題，是「材質在跟水反應」","純鈦不會：夠純、不跟食物作用","表面緻密不吸味——裝過什麼，都不會偷偷記著","最關鍵：沒有塗層，刮花了也不掉屑、安全無毒","好餐具，讓你只嚐到食物本身。「媽媽食安三問」①｜下一題：怎麼看出塗層？追蹤"],
+caption:"孩子喝一口水就吐掉：「這個怪怪的。」→ 滑一下告訴你為什麼純鈦不會有這問題。「媽媽食安三問」①，追蹤看下一題。",
+prod:"雙層杯（情境）"},
+
+{d:4,cat:"life",fmt:"單圖",plat:"IG",cta:"留言",hook:"露營前一晚，我家廚房像被搶劫過。",
+copy:`切好的菜、分裝的調味、洗好的鈦碗排一排——備料佔了露營一半的功夫，卻也是我最喜歡的部分。
+
+孩子會湊過來問「這個要帶嗎」，然後偷吃一顆小番茄。
+
+你們都怎麼備料的？留言教我幾招，我真的需要。`,
+prod:"純鈦砧板、折疊雪拉碗"},
+
+{d:5,cat:"prod",fmt:"Reels",plat:"IG",cta:"官網會員",hook:"一碗多用，收得比你想的小",
+board:[["0–3s","雪拉碗裝滿食物","一碗多用，飯麵湯都行"],["3–6s","吃完，手柄往內一折","折疊手柄，一折就收"],["6–9s","幾個碗疊起來、放進收納袋","疊起來，收得小"],["結尾","碗放桌上、家人背景","純鈦雪拉碗 450ml｜折疊手柄好收"]],
+caption:"雪拉碗一碗多用，煮食盛裝都行；吃完手柄一折、幾個疊著收，背包不占位。純鈦不卡味。加入官網會員送 100 購物金。",
+prod:"純鈦折疊雪拉碗 450ml（105004）"},
+
+{d:6,cat:"reci",fmt:"Reels",plat:"IG",cta:"留言換配方卡",hook:"露營最療癒的事：把一堆顏色切碎。",
+board:[["0–3s","砧板上番茄、彩椒、洋蔥、香菜特寫，刀切下","露營版莎莎醬，免開火"],["3–8s","孩子一起切、拌，倒進雪拉碗（快剪）","孩子也能一起做"],["8–12s","拌好、舀到玉米片上、一口","配玉米片，秒殺"],["結尾","一碗繽紛莎莎醬俯拍","留言「莎莎」拿黃金比例配方卡"]],
+caption:"免開火、現做現吃、色彩爆炸——露營版莎莎醬，孩子搶著切。留言「莎莎」我把黃金比例配方卡傳給你。（生鮮當餐吃完最安心）",
+prod:"純鈦砧板 IGT、折疊餐刀、折疊雪拉碗 450ml"},
+
+{d:7,cat:"reci",fmt:"Reels",plat:"FB",cta:"留言換食譜＋預告",hook:"露營甜點，我作弊——在家先烤好。",
+board:[["0–3s","家裡烤箱端出司康","司康在家烤好，帶上山"],["3–7s","山上砧板分切、抹果醬、雪拉碗裝","現場只要切、抹、開動"],["7–11s","配手沖咖啡、家人分食","森林裡的下午茶"],["結尾","司康擺盤特寫","留言「司康」拿食譜｜下週：燕麥能量棒"]],
+caption:"烘焙搬上山最簡單的方式，就是在家烤好。司康常溫放得住，現場切一切、抹上果醬就開動。留言「司康」拿食譜。Challenge 第 1 集｜下週見。",
+prod:"純鈦砧板、雪拉碗、單層杯（免火・山下預製）"},
+
+{d:8,cat:"life",fmt:"單圖",plat:"FB",cta:"追蹤",hook:"露營最奢侈的，是早上沒有鬧鐘，只有孩子的笑聲。",
+copy:`大人捧著熱咖啡發呆，小孩已經在帳篷外面跑。這種早晨，城市裡給不了。
+
+我們家有個規矩：早餐一定一起吃。哪怕只是簡單的吐司和牛奶，圍在一起就是不一樣。
+
+你們露營都幾點起床？我家孩子六點就把我挖起來了。`,
+prod:"雙層杯、窗花餐盤"},
+
+{d:9,cat:"prod",fmt:"單圖",plat:"FB",cta:"官網會員",hook:"裝冰的，杯壁卻不會滴一桌水——夏天我給孩子選杯子的條件。",
+copy:`純鈦雙層杯，中間是真空層，裝冰水冰茶，外壁不結一層水珠、桌上不濕答答；裝熱的也不燙手，一杯四季都好用。
+
+300ml 對孩子剛好，冰飲、牛奶、熱湯都裝得。無塗層、不串味，這點我不妥協。
+
+想給孩子備一個的話，加入官網會員送 100 購物金。`,
+prod:"純鈦雙層杯 300ml（404004）／450ml（404005）"},
+
+{d:10,cat:"life",fmt:"單圖",plat:"IG",cta:"留言",hook:"「這是我的。」——孩子有了第一套自己的餐具之後。",
+copy:`自從幫孩子準備了一套專屬餐具，他吃飯變積極了。
+
+會說「這是我的」，會自己拿、自己收，露營時還學大人的樣子擺盤。一支輕輕的鈦刀叉勺，變成他參與這頓飯的方式。
+
+儀式感不用花大錢，一套專屬餐具就夠。`,
+prod:"三合一純鈦刀叉勺"},
+
+{d:11,cat:"prod",fmt:"Reels",plat:"IG",cta:"官網會員",hook:"刀、叉、勺，三件一套帶著走。",
+board:[["0–3s","純鈦折疊餐刀叉勺三件排開","刀、叉、勺，一套齊全"],["3–7s","展開一支、用它切叉舀（快剪）","折疊收合，用完就收"],["7–10s","收進小袋、丟背包","輕到孩子自己拿"],["結尾","三件排列特寫","純鈦折疊餐刀叉勺｜加入官網會員送 100 購物金"]],
+caption:"純鈦折疊餐刀、叉、勺，一套帶著走，露營餐具不用帶一整包。輕、好清潔，孩子自己就能拿。加入官網會員送 100 購物金。",
+prod:"純鈦折疊餐刀 105017／叉 105018／勺 105019"},
+
+{d:12,cat:"know",fmt:"輪播",plat:"FB",cta:"追蹤",hook:"你家的鍋杯，有沒有在偷偷剝落？",
+slides:["你家的鍋杯，有沒有在偷偷剝落？","用久了刮花、掉色，那層塗層去哪了？","答案：一部分，可能被你吃下去了","怎麼避免？選「一體成型、無塗層」的","純鈦本身就是安全材質，不需要塗層","一個判斷法：看內壁有沒有另一層「膜」","媽媽食安三問②｜下一題：戶外沒冰箱怎麼吃得安全｜追蹤"],
+caption:"塗層剝落是很多人忽略的入口風險。滑一下教你怎麼判斷、怎麼避開。媽媽食安三問②，追蹤看第三題。",
+prod:"窗花餐盤、餐具"},
+
+{d:13,cat:"life",fmt:"單圖",plat:"IG",cta:"留言",hook:"找到一片有光的樹林，就地開了一場下午茶。",
+copy:`走累了，找到一片陽光灑下來的樹林，我們就地坐下開茶。
+
+一壺手沖、幾片餅乾、鈦盤裝一裝，孩子坐在防潮墊上晃腳。沒有計畫，反而最放鬆。露營教我最多的，就是「不趕時間」。
+
+你最難忘的一次戶外下午茶在哪？`,
+prod:"窗花餐盤、單層杯"},
+
+{d:14,cat:"reci",fmt:"Reels",plat:"FB",cta:"留言換配方＋預告",hook:"爬山補給我不買了，自己做——放一週都不壞。",
+board:[["0–3s","燕麥、堅果、蜂蜜壓進模具（家裡）","燕麥能量棒，在家壓一壓"],["3–7s","切塊、包起、塞進背包","乾的、超耐放，放一週沒問題"],["7–11s","山頂拿出來咬一口、鈦盤裝","爬到哪、吃到哪"],["結尾","能量棒切面特寫","留言「能量棒」拿配方｜下週：野餐拼盤"]],
+caption:"市售能量棒成分看不懂，不如自己壓。乾式、超耐放，塞背包放一週都行。留言「能量棒」拿配方。Challenge 第 2 集。",
+prod:"窗花餐盤、雙層杯（免火・乾式耐放）"},
+
+{d:15,cat:"prod",fmt:"Reels",plat:"IG",cta:"官網會員",hook:"切過蒜的砧板，沖一下就乾淨。",
+board:[["0–3s","砧板攤開，切五顏六色食材","一塊砧板，備料一次搞定"],["3–7s","切完蒜、辛香料，清水一沖","切過蒜，沖一下就乾淨"],["7–10s","擦乾、掛起","純鈦不吃色、不卡味"],["結尾","砧板質感特寫","純鈦砧板 IGT｜加入官網會員送 100 購物金"]],
+caption:"純鈦砧板切什麼都不留味——切過蒜、薑、辛香料，清水一沖就乾淨，不吃色不卡味。加入官網會員送 100 購物金。",
+prod:"純鈦砧板 IGT（107001）"},
+
+{d:16,cat:"life",fmt:"單圖",plat:"FB",cta:"追蹤",hook:"在山上，孩子第一次知道「原來這是完整的一根蔥」。",
+copy:`在家的菜都是切好、包好的，他以為菜本來就長那樣。
+
+這次在營地備料，他捏著一整根蔥問我這是什麼，我突然覺得，帶他出來對了。
+
+露營不只是玩，是讓孩子重新認識「吃」這件事——從一根蔥開始。`,
+prod:"純鈦砧板、折疊雪拉碗"},
+
+{d:17,cat:"reci",fmt:"Reels",plat:"IG",cta:"留言",hook:"免火、免冷藏、免收拾——露營早餐我只做這個。",
+board:[["0–3s","鈦杯倒燕麥脆片、堅果、乾果","三種材料，倒一倒"],["3–7s","搖一搖、開吃、配常溫豆奶","免火免冷藏，超省事"],["7–10s","孩子自己組裝","孩子自己 DIY"],["結尾","一杯繽紛穀物特寫","留言「穀物」拿黃金比例"]],
+caption:"堅果乾果格蘭諾拉能量杯——免火、免冷藏、免收拾，露營早餐懶人首選，孩子還能自己動手。留言「穀物」拿比例。",
+prod:"雙層杯、折疊雪拉碗（原 D17 主題待定，先定格蘭諾拉杯）"},
+
+{d:18,cat:"prod",fmt:"單圖",plat:"IG",cta:"官網會員",hook:"同樣一份食物，換個盤子，孩子多吃半碗。",
+copy:`純鈦窗花餐盤，邊緣是鏤空窗花，裝什麼都好看，露營拍照也上相，發限動總有人問哪買的。
+
+16／18／20cm 三個尺寸，疊起來收也不占位。
+
+好看又安全，這種東西我最買單。加入官網會員送 100 購物金。`,
+prod:"純鈦窗花餐盤 16/18/20cm（105041–49）"},
+
+{d:19,cat:"life",fmt:"單圖",plat:"FB",cta:"追蹤",hook:"一天最好的時刻：夕陽下山，飯菜上桌。",
+copy:`忙了一整天行程，全家終於坐下來。天邊還有一點橘紅，鍋裡還冒著煙，孩子搶著說今天發生的事。
+
+這種時候我都會偷偷想：值得了。
+
+你們露營最期待哪個時刻？`,
+prod:"窗花餐盤、雙層杯"},
+
+{d:20,cat:"know",fmt:"輪播",plat:"FB",cta:"追蹤",hook:"戶外沒冰箱，這些東西到底能放多久？",
+slides:["戶外沒冰箱，這些東西到底能放多久？","夏天最怕：生的、乳製品、拌過美乃滋的","原則一：能買常溫耐放的，就別帶需要冷藏的","原則二：生鮮「現做現吃」，別留到下一餐","原則三：餐具好清潔、不殘留＝少一個風險","純鈦不卡味、不殘留，洗一下就乾淨","媽媽食安三問③完｜三題收藏起來｜追蹤看更多"],
+caption:"夏天露營帶小孩，食物保存是大事。三個原則幫你避開踩雷。媽媽食安三問③（完），三題記得收藏。",
+prod:"折疊雪拉碗、窗花餐盤"},
+
+{d:21,cat:"reci",fmt:"單圖",plat:"IG",cta:"留言換清單＋預告",hook:"不用開火，30 秒擺出一桌野餐。",
+copy:`硬起司、堅果、乾果、餅乾，鋪在純鈦砧板上就是一盤野餐拼盤。現做現吃、免冷藏，夏天露營最安全的吃法。
+
+擺盤沒有規則，讓孩子自己排，反而最好看。
+
+留言「拼盤」拿我的採買清單。下週 Challenge 最終回：磅蛋糕。`,
+prod:"純鈦砧板 IGT（現做現吃・當餐食用）"},
+
+{d:22,cat:"life",fmt:"單圖",plat:"IG",cta:"留言",hook:"關掉營燈那一刻，孩子安靜了。",
+copy:`他第一次看到那麼多星星。
+
+我們躺在天幕下，他一直問哪顆是北極星，我其實也不知道，就亂指。手裡的鈦杯還留著一點餘溫。
+
+這種夜晚，比任何遊樂園都珍貴。你最難忘的星空在哪裡看的？`,
+prod:"雙層杯、純鈦水壺"},
+
+{d:23,cat:"prod",fmt:"單圖",plat:"FB",cta:"官網會員",hook:"一家四口的水，一壺搞定。",
+copy:`純鈦水壺 800ml，一壺裝滿全家輪流喝。
+
+不管裝冷水、溫水、還是加了檸檬片的水，都不會有塑膠味或金屬味。放背包一整天，喝起來還是乾淨的味道。
+
+給全家喝的水，我只想要單純。加入官網會員送 100 購物金。`,
+prod:"純鈦水壺 800ml（106020）"},
+
+{d:24,cat:"life",fmt:"單圖",plat:"FB",cta:"追蹤",hook:"下雨的露營，反而是我最喜歡的。",
+copy:`躲在天幕下，聽雨聲、煮一鍋熱的，全家擠在一起玩桌遊。哪都不能去，反而逼我們好好待在一起。
+
+孩子說：「媽媽，下雨也很好玩耶。」
+
+換個角度，壞天氣也能是好回憶。你遇過最難忘的雨天露營嗎？`,
+prod:"折疊雪拉碗、窗花餐盤"},
+
+{d:25,cat:"prod",fmt:"單圖",plat:"IG",cta:"官網會員",hook:"一家人的餐具，長得像一家人。",
+copy:`純鈦飯勺、湯勺、濾勺，擺在一起像全家福。
+
+在家煮飯順手的工具，露營一樣要用得順。這幾支都是純鈦、輕、好清潔，撈麵、盛飯、濾料樣樣行。
+
+工欲善其事，露營煮飯也一樣。想備齊的話，加入官網會員送 100 購物金。`,
+prod:"純鈦飯勺、湯勺、濾勺"},
+
+{d:26,cat:"life",fmt:"單圖",plat:"IG",cta:"留言",hook:"收營那一刻，總有點捨不得。",
+copy:`把碗盤洗乾淨、摺好、一件件收進箱子，帳篷慢慢消失，草地恢復原狀，好像我們沒來過。但那些一起吃飯的畫面都還在。
+
+把家收進箱子裡，下次再打開。
+
+你收營都花多久？我們家永遠低估時間。`,
+prod:"40/50L 折疊收納箱"},
+
+{d:27,cat:"prod",fmt:"Reels",plat:"FB",cta:"官網會員",hook:"一個箱子，秒變一張桌。",
+board:[["0–3s","折疊收納箱裝滿裝備","裝得下全家的鍋碗"],["3–6s","蓋上木桌板，變成桌子","蓋上，就是一張桌"],["6–9s","桌上擺鈦杯鈦盤、家人用餐","收納＋桌面，一物兩用"],["9–12s","收營一秒摺平","不用時，摺平帶走"],["結尾","收納箱側面特寫","40/50L 折疊收納箱｜加入官網會員送 100 購物金"]],
+caption:"裝備收進去、木桌板蓋上就是一張桌，收營再摺平——一個箱子當兩件用。加入官網會員送 100 購物金。",
+prod:"40/50L 木桌板折疊收納箱"},
+
+{d:28,cat:"reci",fmt:"Reels",plat:"IG",cta:"留言換食譜＋互動",hook:"Challenge 最終回：把一條磅蛋糕帶上山。",
+board:[["0–3s","家裡切磅蛋糕、用紙包好","磅蛋糕在家烤好，常溫放得住"],["3–7s","山上窗花餐盤擺盤、切片、配茶","山頂下午茶，擺盤就很美"],["7–11s","家人分食、笑","甜的東西，讓累了一天的人瞬間回血"],["結尾","磅蛋糕切片特寫","留言「磅蛋糕」拿食譜｜四週 Challenge 完結"]],
+caption:"Challenge 最終回。磅蛋糕常溫耐放，最適合帶上山，窗花餐盤一擺就是山頂咖啡廳。留言「磅蛋糕」拿食譜。四週下來，你最愛哪一道？",
+prod:"純鈦窗花餐盤（免火・山下預製）"},
+
+{d:29,cat:"life",fmt:"單圖",plat:"FB",cta:"追蹤",hook:"這是我們家的露營餐桌，每一件都選過。",
+copy:`杯、碗、盤、砧板，每一件都是我認真挑過的——不是最貴，是最適合一家人、最讓我安心的。
+
+擺在一起才發現，這一個月，我們把「家的餐桌」完整搬到了山上。
+
+每一次戶外用餐，都值得有一套好好的餐桌。這個月的分享有幫到你嗎？留言告訴我。`,
+prod:"全產品線"},
+
+{d:30,cat:"life",fmt:"單圖",plat:"FB＋IG",cta:"追蹤＋LINE",hook:"30 天，30 頓在山上好好吃的飯。",
+copy:`我們聊了食譜、聊了食安、聊了一家人在山上好好吃飯這件事。謝謝你看到這裡。
+
+如果這些內容有讓你覺得「露營也能吃得安心又好看」，那就達到我的目的了。接下來還會有新的食譜、新的裝備、新的親子露營故事。
+
+還沒追蹤的留下來；想升級餐桌的，加入官網會員送 100 購物金等你。
+從心出發，到哪裡都是家。我們下一頓飯見。`,
+prod:"品牌收束"},
+];
+
+const catName={life:"生活 Lifestyle",prod:"產品 Product",reci:"食譜 Recipe",know:"知識 Knowledge"};
+const catVar={life:"--c-life",prod:"--c-prod",reci:"--c-reci",know:"--c-know"};
+const fmtColor={"單圖":"--f-single","Reels":"--f-reels","輪播":"--f-carousel"};
+const esc=(s)=>s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+const el=(h)=>{const t=document.createElement("template");t.innerHTML=h.trim();return t.content.firstChild;};
+
+// stats
+const counts=P.reduce((a,p)=>{a[p.fmt]=(a[p.fmt]||0)+1;return a;},{});
+const statwrap=document.getElementById("stat");
+[["共 30 篇"],["單圖 "+(counts["單圖"]||0)],["Reels "+(counts["Reels"]||0)],["輪播 "+(counts["輪播"]||0)]].forEach(([t])=>
+  statwrap.appendChild(el(`<span class="chip">${t}</span>`)));
+
+const wrap=document.getElementById("posts");
+P.forEach(p=>{
+  let bodyHtml="";
+  if(p.fmt==="單圖"){bodyHtml=`<p class="copy">${esc(p.copy)}</p>`;}
+  else if(p.fmt==="Reels"){
+    const rows=p.board.map(([t,v,c])=>`<tr><td>${esc(t)}</td><td>${esc(v)}</td><td>${esc(c)}</td></tr>`).join("");
+    bodyHtml=`<table class="board"><tbody>${rows}</tbody></table><p class="caption"><b>Caption</b><br>${esc(p.caption)}</p>`;
+  } else if(p.fmt==="輪播"){
+    const lis=p.slides.map((s,i)=>`<li class="${i===0?"cover":""}">${esc(s)}</li>`).join("");
+    bodyHtml=`<ol class="slides">${lis}</ol><p class="caption"><b>Caption</b><br>${esc(p.caption)}</p>`;
+  }
+  wrap.appendChild(el(
+    `<article class="post" style="--cat:var(${catVar[p.cat]})">
+      <div class="phead">
+        <span class="dnum"><small>D</small>${p.d}</span>
+        <span class="cat-tag">${catName[p.cat]}</span>
+        <span class="spacer"></span>
+        <span class="pill fmt" style="background:var(${fmtColor[p.fmt]})">${p.fmt}</span>
+        <span class="pill plat">${p.plat}</span>
+        <span class="pill cta">${p.cta}</span>
+      </div>
+      <p class="hook">${esc(p.hook)}</p>
+      ${bodyHtml}
+      <div class="pfoot"><b>置入</b>　${esc(p.prod)}</div>
+    </article>`));
+});
+</script>
