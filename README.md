@@ -12,6 +12,13 @@
 | `2026-07-04-social-dashboard-spec.md` | 儀表板指標定義、操作節奏與資料隱私規格 |
 | `2026-07-04-social-dashboard.html` | 90 天 KPI 追蹤儀表板，單檔離線可用，數據僅存於瀏覽器本機 |
 | `2026-07-07-competitor-social-audit.md` | 五家競品社群發文策略實查、逐家解讀與戰略啟示 |
+| `2026-07-14-30day-social-content-spec.md` | 30 天社群內容規格 |
+| `2026-07-14-30day-visual-prompts.md` | 30 天視覺 prompts |
+| `2026-07-14-30day-content-scripts.html` | 30 天內容腳本（HTML） |
+| `2026-07-15-30day-asset-sourcing-plan.md` | 30 天素材取得計畫 |
+| `2026-07-15-batch2-scene-prompts.md` | 第二批場景 prompts |
+| `2026-07-15-product-cards-copy.md` | 產品卡文案 |
+| `2026-07-15-knowledge-cards-template.html` | 知識卡模板（HTML） |
 
 ## 報告架構（10 章）
 
@@ -40,4 +47,4 @@
 
 ---
 
-版本：初稿 v1.0｜2026-06-18
+版本：v2.7｜初稿 2026-06-18，最後更新 2026-07-26（版本沿革見報告文末版本紀錄）
