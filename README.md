@@ -20,7 +20,7 @@
 | `2026-07-15-product-cards-copy.md` | 產品卡文案 |
 | `2026-07-15-knowledge-cards-template.html` | 知識卡模板（HTML） |
 | `2026-07-26-brand-identity.md` | 品牌識別平台 v0.1 提案版（核心／靈魂／VIS／語調／接觸點），待管理層拍板 |
-| `2026-07-28-b2b-esg-gifting-proposal.md` | B2B ESG 禮贈提案書內部版 v0.3（買家地圖／語言包／三檔組合／素材包＋查證紀錄＋材料端評估），對外版待內部阻塞項解除 |
+| `2026-07-28-b2b-esg-gifting-proposal.md` | B2B ESG 禮贈提案書內部版 v0.4（買家地圖／語言包／三檔組合／素材包含設計權屬聲明＋查證紀錄＋競爭對位），對外版待內部阻塞項解除 |
 
 ## 報告架構（10 章）
 
